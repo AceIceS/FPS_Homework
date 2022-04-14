@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0bdc178d741df49955941ae4df3890, type: 3}
+  m_Name: WeaponGrenadeLauncher
+  m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 6637283105658208016, guid: cbd7e34324dc18b4e8be58ff6cee4f6f, type: 3}
+  MuzzleFXName: GrenadeLauncherMuzzleFX
+  PositionInWeaponSlot: {x: 0, y: 0, z: 0}
+  RotationInWeaponSlot: {x: 0, y: 0, z: 0}
+  CreateMuzzlePosition: {x: 0, y: 0.13, z: 0.7}
+  CreateMuzzleRotation: {x: 0, y: 0, z: 0}
+  AimPositionOffset: {x: -0.007, y: 0.012, z: 0.046}
+  WeaponProjectilePrefab: {fileID: 11400000, guid: 9c3f62bb6d9da224b95cdd04dcfc5559, type: 2}
+  Owner: {fileID: 0}
+  mFireModes:
+  - FireMode: 0
+    FireInterval: 1
+  AmmoPerMagazine: 5
+  ReloadTime: 2
+  BulletSpreadAngle: 1

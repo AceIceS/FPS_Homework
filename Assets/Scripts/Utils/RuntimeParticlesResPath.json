@@ -1,0 +1,20 @@
+{
+  "FxPrefabPath":
+  [
+    "MuzzleFx/RifleMuzzleFX",
+    "ImpactFx/RifleBulletImpactFX",
+    "ImpactFx/RifleBulletHoleDecal",
+    "ImpactFx/GrenadeLauncherImpactFX",
+    "MuzzleFx/GrenadeLauncherMuzzleFX",
+    "ImpactFx/GrenadeLauncherHoleDecal"
+  ],
+  "FxName":
+  [
+    "RifleMuzzleFX",
+    "RifleBulletImpactFX",
+    "RifleBulletHoleDecal",
+    "GrenadeLauncherImpactFX",
+    "GrenadeLauncherMuzzleFX",
+    "GrenadeLauncherHoleDecal"
+  ]
+}

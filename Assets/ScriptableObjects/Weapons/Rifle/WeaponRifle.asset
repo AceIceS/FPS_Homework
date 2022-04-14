@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbaf5918dd013d24082bfce0c0a359c4, type: 3}
+  m_Name: WeaponRifle
+  m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 2019082213806151388, guid: 6e1b4b5a2bef5e246b9ca3308b4352fd, type: 3}
+  MuzzleFXName: RifleMuzzleFX
+  PositionInWeaponSlot: {x: 0, y: 0.03, z: 0.02}
+  RotationInWeaponSlot: {x: 0, y: 0, z: 0}
+  CreateMuzzlePosition: {x: -0.008, y: 0.135, z: 0.5}
+  CreateMuzzleRotation: {x: 0, y: 0, z: 0}
+  AimPositionOffset: {x: 0, y: 0, z: 0}
+  WeaponProjectilePrefab: {fileID: 11400000, guid: 830da8dbfc586d24da97e1620cee6d5f, type: 2}
+  RecoilX: -2
+  RecoilY: 1
+  RecoilZ: 0.35
+  AimRecoilX: -1.5
+  AimRecoilY: 0.8
+  AimRecoilZ: 0.3
+  Snappiness: 10
+  ReturnSpeed: 1
+  HeadTranslateOffset: 0
+  HeadRotationOffset: 0
+  Owner: {fileID: 0}
+  mFireModes:
+  - FireMode: 1
+    FireInterval: 0.1
+  - FireMode: 0
+    FireInterval: 0.2
+  AmmoPerMagazine: 9999
+  ReloadTime: 3
+  BulletSpreadAngle: 1
