@@ -9,8 +9,10 @@ namespace FPS_Homework_Player
     {
         
         #region Fields
-        
+
+        public Camera PlayerMainCamera;
         // Input Control Parameters
+        [Header("Properties")]
         public float Gravity = 15f;
         public float VerticalRotateSpeed = 1.2f;
         public float HorizontalRotateSpeed = 1.2f;
@@ -26,7 +28,14 @@ namespace FPS_Homework_Player
         public float HeadRotationOffset;
         public float PlayerSidewaysRotateVelocity = 6.0f;
         public float PlayerSidewaysTranslateVelocity = 6.0f;
+        
         public Vector3 PlayerVelocity;
+        [Header("Shake Camera as Player Run Settins")]
+        public float BobFrequency = 5f;
+        public float BobHorizontalAmplitude = 0.2f;
+        public float BobVerticalAmplitude = 0.1f;
+        public float HeadBobSmoothing = 0.1f;
+        public float RunningBobMultiper = 1.5f;
         
         // components
         private PlayerInputHandler mPlayerInputHandler;
@@ -58,7 +67,8 @@ namespace FPS_Homework_Player
         // -1:left, 0 mid, 1:right
         [SerializeField]
         private int mCurrentHeadStatus = 0;
-        
+
+        private Vector3 mCameraBobTargetPosition;
         #endregion
 
         // Called By PlayerManager Each Frame
@@ -135,8 +145,11 @@ namespace FPS_Homework_Player
         
         private void HandleCameraRotation()
         {
+            // rotate head
             OnCameraRotate();
             OnPlayerSideWays();
+            // change camera directly
+            ShakeCameraAsPlayerMove();
         }
         
         private void OnCameraRotate()
@@ -259,7 +272,45 @@ namespace FPS_Homework_Player
                     break;
             }
         }
-        
+
+        private void ShakeCameraAsPlayerMove()
+        {
+            if (PlayerVelocity.magnitude <= 5)
+            {
+                return;
+            }
+
+            Vector3 offset = ShakeOffset();
+            if (mPlayerInputHandler.IsSpeedUp)
+            {
+                offset *= RunningBobMultiper;
+            }
+
+            mCameraBobTargetPosition = mHead.transform.position + offset;
+            PlayerMainCamera.transform.position = 
+                Vector3.Lerp(PlayerMainCamera.transform.position, mCameraBobTargetPosition, HeadBobSmoothing);
+            
+            if ((PlayerMainCamera.transform.position - mCameraBobTargetPosition).magnitude <= 0.001f)
+            {
+               PlayerMainCamera.transform.position = mCameraBobTargetPosition;
+            }
+           
+        }
+
+        private Vector3 ShakeOffset()
+        {
+            float time = Time.time;
+            float tmp_HorizontalOffset = 0;
+            float tmp_VerticalOffset = 0;
+
+            Vector3 tmp_Offset = Vector3.zero;
+            tmp_HorizontalOffset = Mathf.Cos(time * BobFrequency) * BobHorizontalAmplitude;
+            tmp_VerticalOffset = Mathf.Sin(time * BobFrequency) * BobVerticalAmplitude;
+            tmp_Offset = mHead.transform.right * tmp_HorizontalOffset + mHead.transform.up * tmp_VerticalOffset;
+
+            return tmp_Offset;
+        }
+
         private void OnPlayerMove()
         {
             //
