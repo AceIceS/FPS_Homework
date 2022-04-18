@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace FPS_Homework_Player
@@ -72,20 +73,9 @@ public class PlayerInputHandler : MonoBehaviour
             return mIsFire;
         }
     }
-    public bool IsSidewayLeft
-    {
-        get
-        {
-            return mIsSidewayLeft;
-        }
-    }
-    public bool IsSidewayRight
-    {
-        get
-        {
-            return mIsSidewayRight;
-        }
-    }
+    
+    public UnityAction<bool> OnSidewayAction;
+    
     public bool TryReload
     {
         get
@@ -108,9 +98,6 @@ public class PlayerInputHandler : MonoBehaviour
     
     private bool mIsAim = false;
     private bool mIsFire = false;
-    
-    private bool mIsSidewayLeft = false;
-    private bool mIsSidewayRight = false;
     
     private bool mTryReload;
     
@@ -280,20 +267,18 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnReadPlayerSidewaytLeftInput(InputAction.CallbackContext actions)
     {
-        if (mIsSidewayRight == true)
+        if (OnSidewayAction != null)
         {
-            mIsSidewayRight = false;
+            OnSidewayAction(false);
         }
-        mIsSidewayLeft = !mIsSidewayLeft;
     }
 
     private void OnReadPlaterSidewayRightInput(InputAction.CallbackContext actions)
     {
-        if (mIsSidewayLeft == true)
+        if (OnSidewayAction != null)
         {
-            mIsSidewayLeft = false;
+            OnSidewayAction(true);
         }
-        mIsSidewayRight = !mIsSidewayRight;
     }
 
     private void OnReadPlayerReloadInput(InputAction.CallbackContext actions)

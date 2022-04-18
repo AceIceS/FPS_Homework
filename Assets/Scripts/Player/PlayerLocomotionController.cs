@@ -51,9 +51,14 @@ namespace FPS_Homework_Player
         private float mLastJumpTime;
 
         private float mCurrentSidewaysRotateOffset;
+        private float mCurrentSidewaysRotateTargetOffset;
+        private Vector3 mHeadOriginPostition;
         private float mCurrentSidewaysTranslateOffset;
+        private float mCurrentSidewaysTranslateTargetOffset;
         // -1:left, 0 mid, 1:right
+        [SerializeField]
         private int mCurrentHeadStatus = 0;
+        
         #endregion
 
         // Called By PlayerManager Each Frame
@@ -67,7 +72,11 @@ namespace FPS_Homework_Player
         
         private void Start()
         {
+            mHeadOriginPostition = mHead.transform.localPosition;
+            
             mPlayerInputHandler = GetComponent<PlayerInputHandler>();
+            mPlayerInputHandler.OnSidewayAction += OnPlayerSidewayAction;
+            
             mCharacterController = GetComponent<CharacterController>();
             mCharacterController.enableOverlapRecovery = true;
             mPlayerWeaponController = GetComponent<PlayerWeaponController>();
@@ -76,7 +85,15 @@ namespace FPS_Homework_Player
             mCharacterController.center = Vector3.up * mCharacterController.height * 0.5f;
     
         }
-        
+
+        private void OnDisable()
+        {
+            if (mPlayerInputHandler != null)
+            {
+                mPlayerInputHandler.OnSidewayAction -= OnPlayerSidewayAction;
+            }
+        }
+
         private void OnGroundCheck()
         {
             float checkDis = mIsOnGround
@@ -170,26 +187,77 @@ namespace FPS_Homework_Player
                 mPlayerWeaponController.WeaponRecoilOffsets.z);
             
         }
-
+        
         private void OnPlayerSideWays()
         {
-            if (mPlayerInputHandler.IsSidewayLeft)
+            // lerp 
+            mCurrentSidewaysRotateOffset = Mathf.Lerp(
+                mCurrentSidewaysRotateOffset, 
+                mCurrentSidewaysRotateTargetOffset,
+                PlayerSidewaysRotateVelocity * Time.deltaTime);
+            mCurrentSidewaysTranslateOffset = Mathf.Lerp(
+                mCurrentSidewaysTranslateOffset,
+                mCurrentSidewaysTranslateTargetOffset, 
+                PlayerSidewaysTranslateVelocity * Time.deltaTime);
+            // set
+            mHead.transform.Rotate(
+                0,0,mCurrentSidewaysRotateOffset,Space.Self);
+            //Vector3 translateOffset = 
+            //    mHead.transform.TransformVector(
+            //        mCurrentSidewaysTranslateOffset, 0, 0);
+            //Debug.LogError(translateOffset);
+            mHead.transform.localPosition = mHeadOriginPostition +
+                                            new Vector3(
+                                                mCurrentSidewaysTranslateOffset, 0, 0);
+        }
+
+        private void OnPlayerSidewayAction(bool isRight)
+        {
+            switch (mCurrentHeadStatus)
             {
-                mCurrentSidewaysRotateOffset = Mathf.Lerp(mCurrentSidewaysRotateOffset, HeadRotationOffset,
-                    PlayerSidewaysRotateVelocity * Time.deltaTime);
-                mCurrentSidewaysTranslateOffset = Mathf.Lerp(mCurrentSidewaysTranslateOffset,
-                    HeadTranslateOffset, PlayerSidewaysTranslateVelocity * Time.deltaTime);
+                case -1:
+                    if (isRight)
+                    {
+                        mCurrentSidewaysRotateTargetOffset = -HeadRotationOffset;
+                        mCurrentSidewaysTranslateTargetOffset = HeadTranslateOffset;
+                        mCurrentHeadStatus = 1;
+                    }
+                    else
+                    {
+                        mCurrentSidewaysRotateTargetOffset = 0;
+                        mCurrentSidewaysTranslateTargetOffset = 0;
+                        mCurrentHeadStatus = 0;
+                    }
+                    break;
+                case 0:
+                    if (isRight)
+                    {
+                        mCurrentSidewaysRotateTargetOffset = -HeadRotationOffset;
+                        mCurrentSidewaysTranslateTargetOffset = HeadTranslateOffset;
+                        mCurrentHeadStatus = 1;
+                    }
+                    else
+                    {
+                        mCurrentSidewaysRotateTargetOffset = HeadRotationOffset;
+                        mCurrentSidewaysTranslateTargetOffset = -HeadTranslateOffset;
+                        mCurrentHeadStatus = -1;
+                    }
+                    break;
+                case 1:
+                    if (isRight)
+                    {
+                        mCurrentSidewaysRotateTargetOffset = 0;
+                        mCurrentSidewaysTranslateTargetOffset = 0;
+                        mCurrentHeadStatus = 0;
+                    }
+                    else
+                    {
+                        mCurrentSidewaysRotateTargetOffset = HeadRotationOffset;
+                        mCurrentSidewaysTranslateTargetOffset = -HeadTranslateOffset;
+                        mCurrentHeadStatus = -1;
+                    }
+                    break;
             }
-            else if(mPlayerInputHandler.IsSidewayRight)
-            {
-                mCurrentSidewaysRotateOffset = Mathf.Lerp(mCurrentSidewaysRotateOffset, -HeadRotationOffset,
-                    PlayerSidewaysRotateVelocity * Time.deltaTime);
-                mCurrentSidewaysTranslateOffset = Mathf.Lerp(mCurrentSidewaysTranslateOffset,
-                    -HeadTranslateOffset, PlayerSidewaysTranslateVelocity * Time.deltaTime);
-            }
-            mHead.transform.Rotate(0,0,
-                mCurrentSidewaysRotateOffset,Space.Self);
-            
         }
         
         private void OnPlayerMove()
