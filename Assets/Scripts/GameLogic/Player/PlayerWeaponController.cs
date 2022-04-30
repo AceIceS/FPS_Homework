@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FPS_Homework_Weapon;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace FPS_Homework_Player
 {
@@ -28,7 +30,17 @@ namespace FPS_Homework_Player
             base.Start();
 
             mPlayerInputHandler = GetComponent<PlayerInputHandler>();
+            mPlayerInputHandler.OnSwitchWeaponAction += SwitchWeapon;
+            
             mPlayerLocomotionController = GetComponent<PlayerLocomotionController>();
+        }
+
+        private void OnDisable()
+        {
+            if (mPlayerInputHandler != null)
+            {
+                mPlayerInputHandler.OnSwitchWeaponAction -= SwitchWeapon;
+            }
         }
 
         public void HandlePlayerWeapons()
@@ -54,14 +66,14 @@ namespace FPS_Homework_Player
 
         private void TryReload()
         {
-            if (Weapon.NeedReload())
+            if (mCurrentWeapon.NeedReload())
             {
                 if (mPlayerInputHandler.IsAim)
                 {
                     mPlayerInputHandler.IsAim = false;
                     CancelAimWeapon();
                 }
-                Weapon.Reload();
+                mCurrentWeapon.Reload();
             }
         }
         
@@ -89,7 +101,7 @@ namespace FPS_Homework_Player
             // transform weapon position
             // todo:different weapons may have different aim offest
             mWeaponAimPosition = Vector3.Lerp(mWeaponAimPosition,
-                WeaponAimPosition.localPosition + Weapon.AimPositionOffset,
+                WeaponAimPosition.localPosition + mCurrentWeapon.AimPositionOffset,
                 SwitchAimSpeed * Time.deltaTime);
             // set fov
         }
@@ -104,19 +116,19 @@ namespace FPS_Homework_Player
         
         private void CalculateWeaponRecoilOffsets()
         {
-            mFiredTime = Weapon.CurrentFireTypeInfo.FireInterval;
+            mFiredTime = mCurrentWeapon.CurrentFireTypeInfo.FireInterval;
             mHasFireThisFrame = true;
             if (mPlayerInputHandler.IsAim)
             {
-                WeaponTotalRecoilOffset += new Vector3(Weapon.AimRecoilX,
-                    Random.Range(-Weapon.AimRecoilY, Weapon.AimRecoilY),
-                    Random.Range(-Weapon.AimRecoilZ, Weapon.AimRecoilZ));
+                WeaponTotalRecoilOffset += new Vector3(mCurrentWeapon.AimRecoilX,
+                    Random.Range(-mCurrentWeapon.AimRecoilY, mCurrentWeapon.AimRecoilY),
+                    Random.Range(-mCurrentWeapon.AimRecoilZ, mCurrentWeapon.AimRecoilZ));
             }
             else
             {
-                WeaponTotalRecoilOffset += new Vector3(Weapon.RecoilX,
-                    Random.Range(-Weapon.RecoilY, Weapon.RecoilY),
-                    Random.Range(-Weapon.RecoilZ, Weapon.RecoilZ));
+                WeaponTotalRecoilOffset += new Vector3(mCurrentWeapon.RecoilX,
+                    Random.Range(-mCurrentWeapon.RecoilY, mCurrentWeapon.RecoilY),
+                    Random.Range(-mCurrentWeapon.RecoilZ, mCurrentWeapon.RecoilZ));
             }
             
         }
@@ -126,7 +138,7 @@ namespace FPS_Homework_Player
             if (mHasFireThisFrame)
             {
                 WeaponRecoilOffsets = Vector3.Lerp(WeaponRecoilOffsets,
-                    WeaponTotalRecoilOffset, Time.deltaTime * Weapon.Snappiness);
+                    WeaponTotalRecoilOffset, Time.deltaTime * mCurrentWeapon.Snappiness);
                 
                 mFiredTime -= Time.deltaTime;
                 if (mFiredTime < 0)
@@ -137,11 +149,29 @@ namespace FPS_Homework_Player
             else
             {
                 WeaponRecoilOffsets = Vector3.Lerp(WeaponTotalRecoilOffset,
-                    Vector3.zero, Time.deltaTime * Weapon.ReturnSpeed);
+                    Vector3.zero, Time.deltaTime * mCurrentWeapon.ReturnSpeed);
                 WeaponTotalRecoilOffset = WeaponRecoilOffsets;
             }
         }
-        
+
+        private void SwitchWeapon(bool isNext)
+        {
+            if(isNext)
+            {
+                mCurrentWeaponIndex = (1 + mCurrentWeaponIndex) % Weapons.Count;
+            }
+            else
+            {
+                --mCurrentWeaponIndex;
+                if (mCurrentWeaponIndex < 0)
+                {
+                    mCurrentWeaponIndex = 0;
+                }
+            }
+            // current weapon
+            
+            // switched weapon
+        }
         
     }
 

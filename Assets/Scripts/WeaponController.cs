@@ -6,29 +6,33 @@ namespace FPS_Homework_Weapon
 {
     public class WeaponController : MonoBehaviour
     {
-        public WeaponBase Weapon;
-
+        public List<WeaponBase> Weapons;
+        
         public Transform WeaponSlot;
 
         public Transform WeaponDefaultPosition;
         
         public Transform WeaponAimPosition;
-        
+
+        protected WeaponBase mCurrentWeapon;
+        protected int mCurrentWeaponIndex = 0; 
+            
         // Start is called before the first frame update
         protected virtual void Start()
         {
-            if (Weapon != null)
+            if (Weapons != null)
             {
-                Weapon.InstantiateWeapon(WeaponSlot, gameObject);
+                mCurrentWeapon = Weapons[mCurrentWeaponIndex];
+                mCurrentWeapon.InstantiateWeapon(WeaponSlot, gameObject);
             }
         }
 
         // Fire,returns true when success
         public bool OpenFire()
         {
-            if (Weapon.CanOpenFire())
+            if (mCurrentWeapon.CanOpenFire())
             {
-                Weapon.HandleWeaponFire();
+                mCurrentWeapon.HandleWeaponFire();
                 return true;
             }
             return false;

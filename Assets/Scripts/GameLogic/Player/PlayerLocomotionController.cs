@@ -95,7 +95,7 @@ namespace FPS_Homework_Player
             mCharacterController.center = Vector3.up * mCharacterController.height * 0.5f;
     
         }
-
+        
         private void OnDisable()
         {
             if (mPlayerInputHandler != null)

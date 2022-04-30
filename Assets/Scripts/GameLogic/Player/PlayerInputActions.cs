@@ -203,8 +203,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""id"": ""5d53d854-c38b-45c6-b1aa-3688469fd655"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""SidewayLeft"",
@@ -260,7 +260,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e912a2ac-33d1-4f8e-b83f-84147812e71f"",
-                    ""path"": ""<Mouse>/middleButton"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

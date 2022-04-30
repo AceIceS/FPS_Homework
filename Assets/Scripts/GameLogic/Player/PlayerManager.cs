@@ -24,7 +24,7 @@ namespace FPS_Homework_Player
         private void Update()
         {
             // read input 
-            float deltaTime = Time.deltaTime;
+            float deltaTime = Time.deltaTime;                                         
             // Handle Raw Input Values
             mPlayerInputHandler.HandleRawInputs(deltaTime);
             // weapon reactions:aim,fire

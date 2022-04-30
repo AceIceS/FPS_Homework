@@ -83,6 +83,8 @@ public class PlayerInputHandler : MonoBehaviour
             return mTryReload;
         }
     }
+
+    public UnityAction<bool> OnSwitchWeaponAction;
     
     // raw input 
     private PlayerInputActions mPlayerInputActions;
@@ -143,6 +145,8 @@ public class PlayerInputHandler : MonoBehaviour
             // reload
             mPlayerInputActions.PlayerInstructions.Reload.started +=
                 OnReadPlayerReloadInput;
+            // switch weapon
+            mPlayerInputActions.PlayerInstructions.SwitchWeapon.performed += OnSwitchWeapon;
             
             mPlayerInputActions.Enable();
         }
@@ -184,7 +188,9 @@ public class PlayerInputHandler : MonoBehaviour
             // reload
             mPlayerInputActions.PlayerInstructions.Reload.started -=
                 OnReadPlayerReloadInput;
-            
+            // switch weapon 
+            mPlayerInputActions.PlayerInstructions.SwitchWeapon.performed -=
+                OnSwitchWeapon;
             mPlayerInputActions.Disable();
         }
     }
@@ -286,6 +292,16 @@ public class PlayerInputHandler : MonoBehaviour
         mTryReload = true;
     }
 
+    private void OnSwitchWeapon(InputAction.CallbackContext action)
+    {
+        if (OnSwitchWeaponAction != null)
+        {
+            Debug.LogError("down");
+            OnSwitchWeaponAction(action.ReadValue<float>() < 0);
+        }
+        
+    }
+    
     #endregion
 
 }

@@ -104,6 +104,16 @@ namespace FPS_Homework_Weapon
             Owner = owner;
         }
 
+        public void HideWeapon()
+        {
+            mWeaponInstance.SetActive(false);
+        }
+
+        public void ShowWeapon()
+        {
+            mWeaponInstance.SetActive(true);
+        }
+        
         public virtual bool NeedReload()
         {
             return false;
