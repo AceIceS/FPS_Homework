@@ -85,6 +85,18 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     public UnityAction<bool> OnSwitchWeaponAction;
+
+    public bool IsInteract
+    {
+        get
+        {
+            return mIsInteract;
+        }
+        set
+        {
+            mIsInteract = value;
+        }
+    }
     
     // raw input 
     private PlayerInputActions mPlayerInputActions;
@@ -102,6 +114,8 @@ public class PlayerInputHandler : MonoBehaviour
     private bool mIsFire = false;
     
     private bool mTryReload;
+
+    private bool mIsInteract;
     
     #endregion
     
@@ -147,6 +161,8 @@ public class PlayerInputHandler : MonoBehaviour
                 OnReadPlayerReloadInput;
             // switch weapon
             mPlayerInputActions.PlayerInstructions.SwitchWeapon.performed += OnSwitchWeapon;
+            // press F
+            mPlayerInputActions.PlayerInstructions.Interact.performed += OnInteractObject;
             
             mPlayerInputActions.Enable();
         }
@@ -191,6 +207,10 @@ public class PlayerInputHandler : MonoBehaviour
             // switch weapon 
             mPlayerInputActions.PlayerInstructions.SwitchWeapon.performed -=
                 OnSwitchWeapon;
+            // press F
+            mPlayerInputActions.PlayerInstructions.Interact.performed -= 
+                OnInteractObject;
+            
             mPlayerInputActions.Disable();
         }
     }
@@ -203,6 +223,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void ResetInputActionsInLateUpdate()
     {
         mTryReload = false;
+        mIsInteract = false;
     }
     
     #region Handle Raw Input Values
@@ -296,10 +317,14 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (OnSwitchWeaponAction != null)
         {
-            Debug.LogError("down");
             OnSwitchWeaponAction(action.ReadValue<float>() < 0);
         }
         
+    }
+    
+    private void OnInteractObject(InputAction.CallbackContext action)
+    {
+        mIsInteract = true;
     }
     
     #endregion

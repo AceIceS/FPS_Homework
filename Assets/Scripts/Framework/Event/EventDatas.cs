@@ -8,11 +8,16 @@ namespace FPS_Homework_Framework
 {
 
     // Event Types
+    // 加载场景完毕
+    // 进入游戏
+    // 延时
+    // 伤害计算
     public enum EventID
     {
         LOADING,
         ENTERGAME,
-        DAMAGEPLAYER,
+        TIMEDELAY,
+        TAKEDAMAGE,
     }
 
     #region Event Args

@@ -16,7 +16,11 @@ namespace FPS_Homework_Weapon
 
         public float BulletSpreadAngle = 5.0f;
 
-        private int mAmmoConsumption = 0;
+        //private int mAmmoConsumption = 0;
+        private int mCurrentMagazine;
+        [SerializeField]
+        private int mTotalAmmo;
+        
         private float mLastFireTime;
 
         private bool mIsReloading = false;
@@ -25,17 +29,27 @@ namespace FPS_Homework_Weapon
         protected override void OnEnable()
         {
             base.OnEnable();
-            mAmmoConsumption = 0;
+            mCurrentMagazine = AmmoPerMagazine;
             mLastFireTime = 0;
             mIsReloading = false;
         }
 
+        public override void AddAmmo(int ammo)
+        {
+            mTotalAmmo += ammo;
+            if (mTotalAmmo < 0)
+            {
+                mTotalAmmo = 0;
+            }
+            
+        }
+        
         #region Reload
 
         public override bool NeedReload()
         {
             if (mIsReloading == false &&
-                mAmmoConsumption > 0)
+                mCurrentMagazine < AmmoPerMagazine)
             {
                 return true;
             }
@@ -45,6 +59,11 @@ namespace FPS_Homework_Weapon
 
         public override void Reload()
         {
+            if (mTotalAmmo <= 0)
+            {
+                return;
+            }
+            
             mIsReloading = true;
             mWeaponAnimator.SetTrigger(mReloadAnimName);
             // TODO: what if the player switch weapon?
@@ -58,7 +77,18 @@ namespace FPS_Homework_Weapon
             //
             mIsReloading = false;
             mWeaponAnimator.ResetTrigger(mReloadAnimName);
-            mAmmoConsumption = 0;
+            yield return new WaitForSeconds(0.5f);
+
+            if (mTotalAmmo >= AmmoPerMagazine)
+            {
+                mCurrentMagazine = AmmoPerMagazine;
+            }
+            else
+            {
+                mCurrentMagazine = mTotalAmmo;
+            }
+            mTotalAmmo -= mCurrentMagazine;
+
         }
 
         #endregion
@@ -71,7 +101,7 @@ namespace FPS_Homework_Weapon
             // 2.Ammo?
             // 3.Fire Interval?
             if (mIsReloading == false &&
-                mAmmoConsumption < AmmoPerMagazine &&
+                mCurrentMagazine > 0  &&
                 (mLastFireTime == 0 ||
                  Time.time >= mLastFireTime + CurrentFireTypeInfo.FireInterval))
             {
@@ -104,7 +134,7 @@ namespace FPS_Homework_Weapon
 
             // TODO:Sound
 
-            ++mAmmoConsumption;
+            --mCurrentMagazine;
             mLastFireTime = Time.time;
         }
 

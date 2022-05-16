@@ -1,27 +1,28 @@
 
 using System;
+using FPS_Homework_Framework;
+using FPS_Homework_Weapon;
 using UnityEngine;
 
 namespace FPS_Homework_Player
 {
 
-    public class PlayerManager : MonoBehaviour
+    public class PlayerEntity : Entity
     {
-
-        private PlayerLocomotionController mPlayerLocomotionController;
+        
         private PlayerInputHandler mPlayerInputHandler;
+        private PlayerLocomotionController mPlayerLocomotionController;
         private PlayerWeaponController mPlayerWeaponController;
 
-        private void Start()
+
+        protected override void Start()
         {
             mPlayerLocomotionController = GetComponent<PlayerLocomotionController>();
             mPlayerInputHandler = GetComponent<PlayerInputHandler>();
             mPlayerWeaponController = GetComponent<PlayerWeaponController>();
         }
 
-        // update loop of player
-        // todo:implement this in other place instead of update
-        private void Update()
+        public override void UpdateEntity()
         {
             // read input 
             float deltaTime = Time.deltaTime;                                         
@@ -34,11 +35,29 @@ namespace FPS_Homework_Player
             mPlayerLocomotionController.HandlePlayerLocomotion();
         }
 
-        private void LateUpdate()
+        public override void FixUpdateEntity()
+        {
+            
+        }
+
+
+        public override void LateUpdateEntity()
         {
             mPlayerInputHandler.ResetInputActionsInLateUpdate();
             mPlayerWeaponController.HandleWeaponsAnimationInLateUpdate();
         }
+
+        public bool AddWeapon(WeaponBase weapon)
+        {
+            return mPlayerWeaponController.AddWeaponToPlayer(weapon);    
+        }
+
+        public bool AddWeaponAmmo(int amount, WeaponType weaponType)
+        {
+            return mPlayerWeaponController.AddWeaponAmmo(amount, weaponType);
+        }
+        
     }
+    
 
 }

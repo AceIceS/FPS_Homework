@@ -10,7 +10,7 @@ namespace FPS_Homework_Framework
         private Dictionary<EventID, List<Event>> mEventId2Event;
         private Dictionary<object, List<EventHandler<BaseEventArgs>>> mEventSender2EventHandler;
         
-        public void Initialize()
+        public void InitializeAtGameEntrance()
         {
             mEventId2Event = new Dictionary<EventID, List<Event>>();
             mEventSender2EventHandler = new Dictionary<object, List<EventHandler<BaseEventArgs>>>();
@@ -64,17 +64,13 @@ namespace FPS_Homework_Framework
             
         }
         
-        public void OnGameStart()
-        {
-            
-        }
         
         public void InitializeModuleBeforeOnStart()
         {
             
         }
         
-        // 事件轮询
+        // events query loop
         public void UpdateModule()
         {
             

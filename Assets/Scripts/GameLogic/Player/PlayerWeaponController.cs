@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using FPS_Homework_Weapon;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 namespace FPS_Homework_Player
 {
@@ -12,27 +14,43 @@ namespace FPS_Homework_Player
     {
         //public GameObject PlayerMainCamera;
         public GameObject PlayerWeaponCamera;
+        public Transform WeaponHideSlot;
+        public float SwitchWeaponSpeed = 10.0f;
         public float SwitchAimSpeed = 10.0f;
+        public float AimCameraScaleSpeed = 10.0f;
         public Vector3 WeaponRecoilOffsets;
         public Vector3 WeaponTotalRecoilOffset;
         // Player Components
         private PlayerInputHandler mPlayerInputHandler;
         private PlayerLocomotionController mPlayerLocomotionController;
 
+        private Camera mPlayerWeaponCamera;
         private Vector3 mWeaponAimPosition;
-
+        private readonly float mCameraDefaultFOV = 60.0f;
+        
         private bool mHasFireThisFrame;
         private float mFiredTime;
+        
+        private WeaponBase mLastWeapon;
+        private float mSwitchWeaponLastTime;
+        // hide weapon : 1s
+        // show weapon : 1s
+        // 0.5s
+        private readonly float mSwitchWeaponIntervalTime = 2f;
+        private bool mUpdateSwitchWeaponAnim = false;
+        private bool mIsSwitchDownWeapon = true;
         
         // Start is called before the first frame update
         protected override void Start()
         {
-            base.Start();
+            //base.Start();
 
             mPlayerInputHandler = GetComponent<PlayerInputHandler>();
             mPlayerInputHandler.OnSwitchWeaponAction += SwitchWeapon;
             
             mPlayerLocomotionController = GetComponent<PlayerLocomotionController>();
+
+            mPlayerWeaponCamera = PlayerWeaponCamera.GetComponent<Camera>();
         }
 
         private void OnDisable()
@@ -43,8 +61,68 @@ namespace FPS_Homework_Player
             }
         }
 
+        public bool AddWeaponToPlayer(WeaponBase weapon)
+        {
+            if (Weapons == null)
+            {
+                Weapons = new List<WeaponBase>();
+            }
+            else
+            {
+                for (int i = 0; i < Weapons.Count; ++i)
+                {
+                    // already have
+                    if (Weapons[i].WeaponType == weapon.WeaponType)
+                    {
+                        return false;
+                    }
+                }
+            }
+            
+            Weapons.Add(weapon);
+            weapon.InstantiateWeapon(WeaponSlot, gameObject);  
+            // already has weapon
+            if (mCurrentWeapon != null)
+            {
+                weapon.WeaponInstance.transform.localPosition = WeaponHideSlot.transform.localPosition;
+                weapon.HideWeapon();
+            }
+            else
+            {
+                mCurrentWeapon = weapon;
+            }
+            
+            return true;
+            
+        }
+
+        public bool AddWeaponAmmo(int amount, WeaponType weaponType)
+        {
+            if (Weapons == null)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < Weapons.Count; ++i)
+            {
+                if (Weapons[i].WeaponType == weaponType)
+                {
+                    Weapons[i].AddAmmo(amount);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
         public void HandlePlayerWeapons()
         {
+            // switching weapon
+            if (mUpdateSwitchWeaponAnim)
+            {
+                return;
+            }
+            
             if (mPlayerInputHandler.Isfire == true)
             {
                 if (OpenFire() == true)
@@ -79,7 +157,13 @@ namespace FPS_Homework_Player
         
         public void HandleWeaponsAnimationInLateUpdate()
         {
+            if (mCurrentWeapon == null)
+            {
+                return;
+            }
+            
             HandleWeaponAimAnimation();
+            HandleSwitchWeaponAnimation();
             
             WeaponSlot.localPosition = mWeaponAimPosition;
         }
@@ -104,6 +188,13 @@ namespace FPS_Homework_Player
                 WeaponAimPosition.localPosition + mCurrentWeapon.AimPositionOffset,
                 SwitchAimSpeed * Time.deltaTime);
             // set fov
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView,
+                mCurrentWeapon.AimCameraFOV,
+                AimCameraScaleSpeed * Time.deltaTime);
+            mPlayerWeaponCamera.fieldOfView = Mathf.Lerp(
+                mPlayerWeaponCamera.fieldOfView,
+                mCurrentWeapon.AimCameraFOV,
+                AimCameraScaleSpeed * Time.deltaTime); 
         }
 
         private void CancelAimWeapon()
@@ -112,6 +203,14 @@ namespace FPS_Homework_Player
             mWeaponAimPosition = Vector3.Lerp(mWeaponAimPosition,
                 WeaponDefaultPosition.localPosition,
                 SwitchAimSpeed * Time.deltaTime);
+            //
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView,
+                mCameraDefaultFOV,
+                AimCameraScaleSpeed * Time.deltaTime);
+            mPlayerWeaponCamera.fieldOfView = Mathf.Lerp(
+                mPlayerWeaponCamera.fieldOfView,
+                mCameraDefaultFOV,
+                AimCameraScaleSpeed * Time.deltaTime); 
         }
         
         private void CalculateWeaponRecoilOffsets()
@@ -135,6 +234,11 @@ namespace FPS_Homework_Player
 
         public void RecoverWeaponRecoil()
         {
+            if (mCurrentWeapon == null)
+            {
+                return;;
+            }
+            
             if (mHasFireThisFrame)
             {
                 WeaponRecoilOffsets = Vector3.Lerp(WeaponRecoilOffsets,
@@ -154,8 +258,63 @@ namespace FPS_Homework_Player
             }
         }
 
+        // hide old weapon & show new weapon
+        private void HandleSwitchWeaponAnimation()
+        {
+            if (mUpdateSwitchWeaponAnim)
+            {
+                if (mIsSwitchDownWeapon)
+                {
+                    // hide old weapon
+                    mLastWeapon.WeaponInstance.transform.localPosition =
+                        Vector3.Lerp(mLastWeapon.WeaponInstance.transform.localPosition,
+                            WeaponHideSlot.transform.localPosition,
+                            SwitchWeaponSpeed * Time.deltaTime);
+                    if ((mLastWeapon.WeaponInstance.transform.localPosition - 
+                        WeaponHideSlot.transform.localPosition).magnitude <= 0.1f)
+                    {
+                        mIsSwitchDownWeapon = false;
+                        mLastWeapon.HideWeapon();
+                    }
+
+                }
+                else
+                {
+                    // show new weapon
+                    if (!mCurrentWeapon.WeaponInstance.activeSelf)
+                    {
+                        mCurrentWeapon.ShowWeapon();
+                    }
+                    mCurrentWeapon.WeaponInstance.transform.localPosition =
+                        Vector3.Lerp(mCurrentWeapon.WeaponInstance.transform.localPosition,
+                            mCurrentWeapon.PositionInWeaponSlot,
+                            SwitchWeaponSpeed * Time.deltaTime);
+                    if ((mCurrentWeapon.WeaponInstance.transform.localPosition - 
+                         mCurrentWeapon.PositionInWeaponSlot).magnitude <= 0.1f)
+                    {
+                        mCurrentWeapon.WeaponInstance.transform.localPosition =
+                            mCurrentWeapon.PositionInWeaponSlot;
+                        mCurrentWeapon.WeaponInstance.transform.localEulerAngles =
+                            mCurrentWeapon.RotationInWeaponSlot;
+                        mUpdateSwitchWeaponAnim = false;
+                    }
+                    
+                }
+            }
+            
+        }
+        
         private void SwitchWeapon(bool isNext)
         {
+            // check switch time
+            if (CheckSwitchWeaponValid() == false)
+            {
+                return;
+            }
+            
+            mSwitchWeaponLastTime = Time.time;
+            
+            // cal index
             if(isNext)
             {
                 mCurrentWeaponIndex = (1 + mCurrentWeaponIndex) % Weapons.Count;
@@ -165,13 +324,39 @@ namespace FPS_Homework_Player
                 --mCurrentWeaponIndex;
                 if (mCurrentWeaponIndex < 0)
                 {
-                    mCurrentWeaponIndex = 0;
+                    mCurrentWeaponIndex = Weapons.Count - 1;
                 }
             }
+
+            mLastWeapon = mCurrentWeapon;
+            mCurrentWeapon = Weapons[mCurrentWeaponIndex];
+            mUpdateSwitchWeaponAnim = true;
+            mIsSwitchDownWeapon = true;
             // current weapon
-            
             // switched weapon
         }
+
+        private bool CheckSwitchWeaponValid()
+        {
+            float triggerTime = Time.time;
+            if (triggerTime - mSwitchWeaponLastTime < mSwitchWeaponIntervalTime)
+            {
+                return false;
+            }
+            // check weapon valid
+            if (Weapons == null || Weapons.Count < 2)
+            {
+                return false;
+            }
+            // check aim
+            if (mPlayerInputHandler.IsAim)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
         
     }
 

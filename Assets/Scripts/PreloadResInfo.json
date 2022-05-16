@@ -1,0 +1,66 @@
+{
+  "ResourcePath":
+  [
+    "MuzzleFx/RifleMuzzleFX",
+    "MuzzleFx/GrenadeLauncherMuzzleFX",
+
+    "ImpactFx/RifleBulletImpactFX",
+    "ImpactFx/RifleBulletHoleDecal",
+    "ImpactFx/GrenadeLauncherImpactFX",
+    "ImpactFx/GrenadeLauncherHoleDecal",
+    
+    "EntityPrefabs/PlayerEntity",
+    "EntityPrefabs/EnemyEntityMeleeSmall",
+    
+    
+    "PickupItems/GrenadeLauncherAmmoItem",
+    "PickupItems/WeaponGrenadeLauncherItem",
+    "PickupItems/WeaponRifleItem",
+    "PickupItems/RifleAmmoItem",
+    "PickupItems/WeaponPistolItem",
+    "PickupItems/PistolAmmoItem",
+    
+    "ScriptableObjects/Weapons/GrenadeLauncher/WeaponGrenadeLauncher",
+    "ScriptableObjects/Weapons/Rifle/WeaponRifle",
+    "ScriptableObjects/Weapons/Pistol/WeaponPistol",
+    "ScriptableObjects/WeaponItems/GrenadeLauncherAmmo",
+    "ScriptableObjects/WeaponItems/PistolAmmo",
+    "ScriptableObjects/WeaponItems/RifleAmmo",
+    
+    "Crosshair/CrossHairGrenadeLauncher",
+    "Crosshair/CrossHairRifle"
+    
+  ],
+  "ResourceName":
+  [
+    "RifleMuzzleFX",
+    "GrenadeLauncherMuzzleFX",
+    
+    "RifleBulletImpactFX",
+    "RifleBulletHoleDecal",
+    "GrenadeLauncherImpactFX",
+    "GrenadeLauncherHoleDecal",
+    
+    "Entity-000",
+    "EnemyEntityMeleeSmall",
+    
+    "GrenadeLauncherAmmoItem",
+    "WeaponGrenadeLauncherItem",
+    "WeaponRifleItem",
+    "RifleAmmoItem",
+    "WeaponPistolItem",
+    "PistolAmmoItem",
+    
+    "WeaponGrenadeLauncher",
+    "WeaponRifle",
+    "WeaponPistol",
+    "GrenadeLauncherAmmo",
+    "PistolAmmo",
+    "RifleAmmo",
+    
+    "CrossHairGrenadeLauncher",
+    "CrossHairRifle"
+    
+  ]
+  
+}

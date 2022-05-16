@@ -11,7 +11,9 @@ namespace FPS_Homework_Framework
         {
             DontDestroyOnLoad(gameObject);
             
-            EventManager.Instance.Initialize();
+            EventManager.Instance.InitializeAtGameEntrance();
+            ResourceManager.Instance.InitializeAtGameEntrance();
+            
         }
 
         // when player click start button
@@ -46,8 +48,7 @@ namespace FPS_Homework_Framework
             // Init GameWorld Component
             GameWorld gw = gameObject.AddComponent<GameWorld>();
             gw.EnterGameWorld();
-            // remove GameEntrance Component ???
-            //Destroy(this);
+ 
         }
         
         private void QuitGameInternal()

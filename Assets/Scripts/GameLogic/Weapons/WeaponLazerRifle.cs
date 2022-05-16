@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace FPS_Homework_Weapon
 {
-    
-    [CreateAssetMenu(menuName = "Weapons/WeaponGrenadeLauncher")]
-    public class WeaponGrenadeLauncher : WeaponRifle
+
+    [CreateAssetMenu(menuName = "Weapons/WeaponLazerRifle")]
+    public class WeaponLazerRifle : WeaponBase
     {
+
+        
         
     }
 

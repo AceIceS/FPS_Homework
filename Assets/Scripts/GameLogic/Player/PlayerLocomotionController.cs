@@ -2,6 +2,12 @@
 using System;
 using UnityEngine;
 
+using FPS_Homework_Framework;
+using FPS_Homework_Item;
+
+using FPS_Homework_Utils;
+
+
 namespace FPS_Homework_Player
 {
 
@@ -38,10 +44,12 @@ namespace FPS_Homework_Player
         public float RunningBobMultiper = 1.5f;
         
         // components
+        private PlayerEntity mPlayerEntity;
         private PlayerInputHandler mPlayerInputHandler;
         private CharacterController mCharacterController;
         private PlayerWeaponController mPlayerWeaponController;
-
+        private PlayerHUD mPlayerHUD;
+        
         [SerializeField]
         private Transform mHead;
         
@@ -78,11 +86,15 @@ namespace FPS_Homework_Player
             OnGroundCheck();
             // Handle Input Reactions
             HandlePlayerLocomotionsInternal();
+            // Interactable object
+            CheckForInteractableObject();
         }
         
         private void Start()
         {
             mHeadOriginPostition = mHead.transform.localPosition;
+
+            mPlayerEntity = GetComponent<PlayerEntity>();
             
             mPlayerInputHandler = GetComponent<PlayerInputHandler>();
             mPlayerInputHandler.OnSidewayAction += OnPlayerSidewayAction;
@@ -90,6 +102,9 @@ namespace FPS_Homework_Player
             mCharacterController = GetComponent<CharacterController>();
             mCharacterController.enableOverlapRecovery = true;
             mPlayerWeaponController = GetComponent<PlayerWeaponController>();
+
+            mPlayerHUD = GetComponent<PlayerHUD>();
+            
             // reset
             mCharacterController.height = 1.8f;
             mCharacterController.center = Vector3.up * mCharacterController.height * 0.5f;
@@ -371,7 +386,46 @@ namespace FPS_Homework_Player
             }
     
         }
+
         
+        public void CheckForInteractableObject()
+        {
+            RaycastHit hit;
+            
+            if(Physics.Raycast(PlayerMainCamera.ScreenPointToRay(
+                    new Vector3(Screen.width / 2.0f,Screen.height / 2.0f,0)),
+                out hit,
+                2.0f,GameWorld.TheGameWorld.PickupItemLayer,
+                QueryTriggerInteraction.Collide))
+            {
+ 
+                if(hit.collider.tag == FrameworkConstants.PickUpItemsLayerName)
+                {
+                    ItemEntity pickupItem = hit.collider.GetComponent<ItemEntity>();
+                    if (pickupItem != null)
+                    {
+                        // Debug.LogError(hit.collider.gameObject.name);
+                        // active UI text
+                        mPlayerHUD.EnableShowInteractableInfo(
+                            GameplayConstants.PlayerInteractableHUDShowText 
+                            + hit.collider.gameObject.name);
+                        // Interact
+                        if (mPlayerInputHandler.IsInteract)
+                        {
+                            pickupItem.OnPlayerInteract(mPlayerEntity);
+                        }
+                    }
+                    
+                }
+                
+            }
+            else
+            {
+                mPlayerHUD.DisableShowInteractableInfo();
+            }
+        }
+
+
         
         #region HelperFuncs
     

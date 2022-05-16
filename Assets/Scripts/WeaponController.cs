@@ -13,14 +13,13 @@ namespace FPS_Homework_Weapon
         public Transform WeaponDefaultPosition;
         
         public Transform WeaponAimPosition;
-
         protected WeaponBase mCurrentWeapon;
         protected int mCurrentWeaponIndex = 0; 
             
         // Start is called before the first frame update
         protected virtual void Start()
         {
-            if (Weapons != null)
+            if (Weapons != null && Weapons.Count > 0)
             {
                 mCurrentWeapon = Weapons[mCurrentWeaponIndex];
                 mCurrentWeapon.InstantiateWeapon(WeaponSlot, gameObject);
@@ -30,7 +29,7 @@ namespace FPS_Homework_Weapon
         // Fire,returns true when success
         public bool OpenFire()
         {
-            if (mCurrentWeapon.CanOpenFire())
+            if (mCurrentWeapon != null && mCurrentWeapon.CanOpenFire())
             {
                 mCurrentWeapon.HandleWeaponFire();
                 return true;

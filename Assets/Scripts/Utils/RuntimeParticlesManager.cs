@@ -11,8 +11,8 @@ namespace FPS_Homework_Utils
     [Serializable]
     public class RuntimeParticlesResPathInfo
     {
-        public List<string> FxPrefabPath = new List<string>(){"123","456"};
-        public List<string> FxName = new List<string>(){"123","123"};
+        public List<string> FxPrefabPath = new List<string>(){};
+        public List<string> FxName = new List<string>(){};
     }
     
     // A singleton class to manage particles

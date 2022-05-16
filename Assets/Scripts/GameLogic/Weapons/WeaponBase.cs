@@ -1,10 +1,20 @@
 using System;
 using System.Collections.Generic;
+using FPS_Homework_Item;
+using FPS_Homework_Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace FPS_Homework_Weapon
 {
+    //
+    public enum WeaponType
+    {
+        Pistol,
+        Rifle,
+        GrenadeLauncher
+    }
+
     //
     public enum WeaponFireMode
     {
@@ -26,9 +36,11 @@ namespace FPS_Homework_Weapon
     }
     
     [Serializable]
-    public abstract class WeaponBase : ScriptableObject
+    public abstract class WeaponBase : ScriptableObjectItemBase
     {
         // Weapon Info
+        public WeaponType WeaponType;
+        
         public WeaponFireTypeInfo CurrentFireTypeInfo
         {
             get
@@ -37,6 +49,7 @@ namespace FPS_Homework_Weapon
             }
         }
         public GameObject WeaponPrefab;
+        public string CrossHairName;
         public string MuzzleFXName;
         
         public Vector3 PositionInWeaponSlot;
@@ -44,7 +57,7 @@ namespace FPS_Homework_Weapon
         public Vector3 CreateMuzzlePosition;
         public Vector3 CreateMuzzleRotation;
         public Vector3 AimPositionOffset;
-        
+        public float AimCameraFOV = 60;
         [Header("Ammo")] 
         public ProjectileBase WeaponProjectilePrefab;
 
@@ -66,6 +79,15 @@ namespace FPS_Homework_Weapon
         [SerializeField]
         private WeaponFireTypeInfo[] mFireModes = null;
         private int mFireModeIndex = 0;
+
+        public GameObject WeaponInstance
+        {
+            get
+            {
+                return mWeaponInstance;
+            }
+        }
+        
         private GameObject mWeaponInstance;
         protected GameObject mWeaponMuzzle;
 
@@ -76,6 +98,11 @@ namespace FPS_Homework_Weapon
         {
         }
 
+        public override bool OnPlayerInteract(PlayerEntity playerEntity)
+        {
+            return playerEntity.AddWeapon(this);
+        }
+        
         // Create Weapon and Bind Owner
         public void InstantiateWeapon(Transform weaponSlot, GameObject owner)
         {
@@ -104,6 +131,10 @@ namespace FPS_Homework_Weapon
             Owner = owner;
         }
 
+        public virtual void AddAmmo(int ammo)
+        {
+        }
+        
         public void HideWeapon()
         {
             mWeaponInstance.SetActive(false);

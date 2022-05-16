@@ -7,8 +7,7 @@ namespace FPS_Homework_Framework
     
     public interface IGameFrameworkModule
     {
-        void OnGameStart();
-        // 
+        
         void InitializeModuleBeforeOnStart();
         void UpdateModule();
         void FixUpdateModule();
