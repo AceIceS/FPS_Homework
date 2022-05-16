@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6346856626094904869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1389736266729900, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_Name
+      value: PistolAmmoItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389736266729900, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389736266729900, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_TagString
+      value: PickupItems
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256256677836720, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+--- !u!1 &6345712115818045321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1389736266729900, guid: 2f202e56118db1b489c056792aa07e45, type: 3}
+  m_PrefabInstance: {fileID: 6346856626094904869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &8132878636238880334
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345712115818045321}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.020372752
+  m_Center: {x: 0, y: 0.000000019557774, z: 0.000000038184226}

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07e8439f7b117248bfc5cd4e678b70c, type: 3}
+  m_Name: WeaponPistol
+  m_EditorClassIdentifier: 
+  WeaponType: 0
+  WeaponPrefab: {fileID: 3994401639341162474, guid: e22c4a61d8960644ab0fbe5ce23620e2, type: 3}
+  CrossHairName: CrossHairRifle
+  MuzzleFXName: RifleMuzzleFX
+  PositionInWeaponSlot: {x: -0.031, y: 0.074, z: -0.044}
+  RotationInWeaponSlot: {x: 0, y: 0, z: 0}
+  CreateMuzzlePosition: {x: 0, y: 0.1255, z: 0.545}
+  CreateMuzzleRotation: {x: 0, y: 0, z: 0}
+  AimPositionOffset: {x: 0.02, y: -0.022, z: -0.044}
+  AimCameraFOV: 50
+  WeaponProjectilePrefab: {fileID: 11400000, guid: 830da8dbfc586d24da97e1620cee6d5f, type: 2}
+  RecoilX: -2
+  RecoilY: 0
+  RecoilZ: 0
+  AimRecoilX: -1.5
+  AimRecoilY: 0
+  AimRecoilZ: 0
+  Snappiness: 10
+  ReturnSpeed: 1
+  Owner: {fileID: 0}
+  mFireModes:
+  - FireMode: 0
+    FireInterval: 0.7
+  AmmoPerMagazine: 6
+  ReloadTime: 3
+  BulletSpreadAngle: 0
+  mTotalAmmo: 12

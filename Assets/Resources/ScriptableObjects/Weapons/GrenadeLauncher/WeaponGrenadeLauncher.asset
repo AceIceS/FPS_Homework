@@ -12,18 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0bdc178d741df49955941ae4df3890, type: 3}
   m_Name: WeaponGrenadeLauncher
   m_EditorClassIdentifier: 
-  WeaponPrefab: {fileID: 6637283105658208016, guid: cbd7e34324dc18b4e8be58ff6cee4f6f, type: 3}
+  WeaponType: 2
+  WeaponPrefab: {fileID: 4031340383259336404, guid: 8ea23a476db0fb04fb704945d164d904, type: 3}
+  CrossHairName: CrossHairGrenadeLauncher
   MuzzleFXName: GrenadeLauncherMuzzleFX
-  PositionInWeaponSlot: {x: 0, y: 0, z: 0}
+  PositionInWeaponSlot: {x: 0, y: 0.03, z: 0}
   RotationInWeaponSlot: {x: 0, y: 0, z: 0}
-  CreateMuzzlePosition: {x: 0, y: 0.13, z: 0.7}
+  CreateMuzzlePosition: {x: -0.07, y: 0.13, z: 0.76}
   CreateMuzzleRotation: {x: 0, y: 0, z: 0}
   AimPositionOffset: {x: -0.007, y: 0.012, z: 0.046}
+  AimCameraFOV: 60
   WeaponProjectilePrefab: {fileID: 11400000, guid: 9c3f62bb6d9da224b95cdd04dcfc5559, type: 2}
+  RecoilX: 0
+  RecoilY: 0
+  RecoilZ: 0
+  AimRecoilX: 0
+  AimRecoilY: 0
+  AimRecoilZ: 0
+  Snappiness: 0
+  ReturnSpeed: 0
   Owner: {fileID: 0}
   mFireModes:
   - FireMode: 0
     FireInterval: 1
   AmmoPerMagazine: 5
-  ReloadTime: 2
+  ReloadTime: 3
   BulletSpreadAngle: 1
