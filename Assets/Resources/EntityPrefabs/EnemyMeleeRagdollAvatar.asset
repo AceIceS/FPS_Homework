@@ -1,0 +1,620 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bedf342f7517b48a204328f1d6dc1b, type: 3}
+  m_Name: EnemyMeleeRagdollAvatar
+  m_EditorClassIdentifier: 
+  mass: 70
+  layer: 0
+  physicMaterial: {fileID: 0}
+  spring: 1000
+  damper: 10
+  previewBones:
+  - name: Hips
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: -1
+    childIDs: 010000000e00000011000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -1.7024151e-16, y: 0.75809366, z: 0.6521457, w: -1.4644928e-16}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0.0036832094, y: 0, z: 0.03503415}
+      m_Extent: {x: 0.17828465, y: 0.06455678, z: 0.06455678}
+    capsuleBounds:
+      height: 0.3565693
+      radius: 0.06455678
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.049999833
+  - name: Spine_01
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 0
+    childIDs: 02000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 7.78057e-16, y: 0.6893129, z: 0.72446376, w: 8.177333e-16}
+    colliderType: 1
+    bounds:
+      m_Center: {x: -0.0043519437, y: 0.010000005, z: 0.07034157}
+      m_Extent: {x: 0.14011894, y: 0.14011894, z: 0.14011894}
+    capsuleBounds:
+      height: 0.28023788
+      radius: 0.14011894
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Spine_02
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 1
+    childIDs: 03000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 1.3103155e-15, y: 0.7569941, z: 0.65342176, w: 1.1310373e-15}
+    colliderType: 1
+    bounds:
+      m_Center: {x: -0.0066375136, y: 0, z: 0.08755779}
+      m_Extent: {x: 0.14538848, y: 0.14538848, z: 0.14538848}
+    capsuleBounds:
+      height: 0.29077697
+      radius: 0.14538848
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Spine_03
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 2
+    childIDs: 04000000080000000c000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 1.1290926e-15, y: 0.6797197, z: 0.73347205, w: 1.2183814e-15}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0.00023451447, y: 0, z: 0.05594477}
+      m_Extent: {x: 0.0801561, y: 0.0801561, z: 0.0801561}
+    capsuleBounds:
+      height: 0.1603122
+      radius: 0.0801561
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Clavicle_L
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 3
+    childIDs: 05000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.6105488, y: -0.6016361, z: -0.36149946, w: 0.3668548}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.07288992}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.07288992}
+    capsuleBounds:
+      height: 0.14577983
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Shoulder_L
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 4
+    childIDs: 06000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.5249035, y: -0.4811758, z: -0.47443485, w: 0.5175499}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.16974007}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.16974007}
+    capsuleBounds:
+      height: 0.33948013
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Elbow_L
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 5
+    childIDs: 07000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.48212746, y: -0.48212746, z: -0.51725537, w: 0.5172554}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.13557282}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.13557282}
+    capsuleBounds:
+      height: 0.27114564
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Hand_L
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 6
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+    colliderType: 2
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0.1
+      radius: 0.05
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Clavicle_R
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 3
+    childIDs: 09000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.6105658, y: 0.6016189, z: 0.36148903, w: 0.36686486}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.0752314}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.0752314}
+    capsuleBounds:
+      height: 0.1504628
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Shoulder_R
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 8
+    childIDs: 0a000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.52490246, y: 0.48117682, z: 0.47443587, w: 0.5175489}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.16974033}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.16974033}
+    capsuleBounds:
+      height: 0.33948067
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Elbow_R
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 9
+    childIDs: 0b000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.4821273, y: 0.4821273, z: 0.5172555, w: 0.5172555}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.13557252}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.13557252}
+    capsuleBounds:
+      height: 0.27114505
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Hand_R
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 10
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+    colliderType: 2
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0.1
+      radius: 0.05
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Neck
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 3
+    childIDs: 0d000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 1.9174389e-15, y: 0.64851725, z: 0.76119995, w: 2.2506021e-15}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.060822174}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.060822174}
+    capsuleBounds:
+      height: 0.12164435
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Head
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 12
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0, y: 0.7071067, z: 0.7071068, w: 0}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0
+      radius: 0
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: UpperLeg_L
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 0
+    childIDs: 0f000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.70701766, y: -0.011223927, z: -0.011223928, w: 0.7070178}
+    colliderType: 1
+    bounds:
+      m_Center: {x: -0.0054206997, y: 0, z: 0.17379886}
+      m_Extent: {x: 0.071029365, y: 0.071029365, z: 0.22551036}
+    capsuleBounds:
+      height: 0.45102072
+      radius: 0.071029365
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: LowerLeg_L
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 14
+    childIDs: 10000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.7223175, y: -0.002685007, z: -0.0025706438, w: 0.6915516}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.18856163}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.18856163}
+    capsuleBounds:
+      height: 0.37712327
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Ankle_L
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 15
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.8717719, y: 0, z: 0, w: 0.48991203}
+    colliderType: 2
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0.1
+      radius: 0.05
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: UpperLeg_R
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 0
+    childIDs: 12000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.70701766, y: 0.011223592, z: 0.011223594, w: 0.7070178}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0.010056421, y: 0, z: 0.19965456}
+      m_Extent: {x: 0.08732192, y: 0.08732192, z: 0.19965456}
+    capsuleBounds:
+      height: 0.39930913
+      radius: 0.08732192
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: LowerLeg_R
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 17
+    childIDs: 13000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.72231746, y: 0.0026858256, z: 0.002571428, w: 0.6915517}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.18856178}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.18856178}
+    capsuleBounds:
+      height: 0.37712356
+      radius: 0.05
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
+  - name: Ankle_R
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 18
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.87177193, y: 0, z: 0, w: 0.48991194}
+    colliderType: 2
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.05}
+      m_Extent: {x: 0.05, y: 0.05, z: 0.05}
+    capsuleBounds:
+      height: 0.1
+      radius: 0.05
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.05
