@@ -14,6 +14,14 @@ namespace FPS_Homework_Framework
     {
         public static GameWorld TheGameWorld = null;
 
+        public GameObject PlayerGameObject
+        {
+            get
+            {
+                return mPlayer;
+            }
+        }
+        
         public LayerMask PickupItemLayer
         {
             get
@@ -31,6 +39,10 @@ namespace FPS_Homework_Framework
         [SerializeField]
         private List<GameObject> mEnemyRespawnPoints;
         
+        
+        // 
+        private GameObject mPlayer = null;
+        
         // Start is called before the first frame update
         private void Start()
         {
@@ -42,8 +54,9 @@ namespace FPS_Homework_Framework
             mPlayerRespawnPoint = GameObject.FindWithTag(FrameworkConstants.PlayerRespawnPointName);
             if (mPlayerRespawnPoint != null)
             {
-                EntityManager.Instance.AddEntity<PlayerEntity>(FrameworkConstants.PlayerEntityName,
+                var playerEntity = EntityManager.Instance.AddEntity<PlayerEntity>(FrameworkConstants.PlayerEntityName,
                     mPlayerRespawnPoint.transform.position,Quaternion.identity);
+                mPlayer = playerEntity.gameObject;
             }
             else
             {
@@ -146,14 +159,17 @@ namespace FPS_Homework_Framework
                 mItemRespawnPoints[5].transform.position + Vector3.up / 2,
                 Quaternion.Euler(-45,0,0));
             
-            EntityManager.Instance.AddEntity<EnemyEntityBase>(
+            // test enemy
+            EntityManager.Instance.AddEntity<EnemyEntityMelee>(
                 "EnemyEntityMeleeSmall",
                 mEnemyRespawnPoints[0].transform.position,
                 Quaternion.identity);
-            EntityManager.Instance.AddEntity<EnemyEntityBase>(
-                "EnemyEntityMeleeSmall",
-                mEnemyRespawnPoints[1].transform.position,
-                Quaternion.identity);
+            
+            //var testEnemy =  EntityManager.Instance.AddEntity<EnemyEntityMelee>(
+            //    "EnemyEntityMeleeSmall",
+            //    mEnemyRespawnPoints[1].transform.position,
+            //    Quaternion.identity);
+
         }
         
 

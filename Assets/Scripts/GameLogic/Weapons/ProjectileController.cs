@@ -1,11 +1,12 @@
 
 using System.Collections.Generic;
+using FPS_Homework_Enemy;
 using FPS_Homework_GamePlay;
 using UnityEngine;
 
+using FPS_Homework_Framework;
 using FPS_Homework_Player;
 using FPS_Homework_Utils;
-using FPS_Homework_Weapon;
 
 
 namespace FPS_Homework_Weapon
@@ -77,7 +78,6 @@ namespace FPS_Homework_Weapon
                 {
                     if (IsValidHit(hit))
                     {
-                        Debug.LogError("On Hit Immediately");
                         OnHitTarget(hit.point, hit.normal, hit.collider);
                     }
                 }
@@ -116,6 +116,10 @@ namespace FPS_Homework_Weapon
 
         private bool IsValidHit(RaycastHit hit)
         {
+            if (hit.collider.tag == "Entity")
+            {
+                return false;
+            }
             
             if (hit.collider.isTrigger && 
                 hit.collider.GetComponent<DamageableTarget>() == null)
@@ -172,6 +176,8 @@ namespace FPS_Homework_Weapon
                 {
                     foundHit = true;
                     closestHit = hit;
+                    // only need first checked object
+                    break;
                 }
             }
 
@@ -190,12 +196,30 @@ namespace FPS_Homework_Weapon
         
         protected virtual void OnHitTarget(Vector3 point, Vector3 normal, Collider collider)
         {
-            RuntimeParticlesManager.Instance.GenerateFxAt(RifleImpactFxName[0],
-                point, Quaternion.LookRotation(normal), 1.0f);
-            // hole
-            RuntimeParticlesManager.Instance.GenerateFxAt(RifleProjectileHoleDecalName,
-                point + normal * 0.001f, Quaternion.LookRotation(normal), 5.0f);
+            DamageableTarget dt = collider.GetComponent<DamageableTarget>();
             
+            // hit ground
+            if (dt == null)
+            {
+                // impact effect
+                ResourceManager.Instance.GenerateFxAt(RifleImpactFxName[0],
+                    point, Quaternion.LookRotation(normal), 1.0f);
+                // decal
+                ResourceManager.Instance.GenerateFxAt(RifleProjectileHoleDecalName,
+                    point + normal * 0.001f, Quaternion.LookRotation(normal), 5.0f);
+            }
+            else
+            {
+                // blood splat impact effect
+                ResourceManager.Instance.GenerateFxAt("ImpactBloodSplat", point, 
+                    Quaternion.LookRotation(normal), 2.0f);
+                // On Hit
+                EnemyEntityBase eeb = dt.EntityGameObject.GetComponent<EnemyEntityBase>();
+                eeb.OnHit(ProjectileDamage);
+                //Debug.LogError("Hit Collider Name : " + collider.gameObject.name);
+                //Debug.LogError("Hit Target Name : " + obj.name);
+            }
+            // destroy projectile
             Destroy(gameObject);
         }
 

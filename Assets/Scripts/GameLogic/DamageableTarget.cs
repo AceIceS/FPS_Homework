@@ -8,7 +8,8 @@ namespace FPS_Homework_GamePlay
     // Handle
     public class DamageableTarget : MonoBehaviour
     {
-
+        public GameObject EntityGameObject;
+        
     }
 
 }

@@ -82,6 +82,11 @@ namespace FPS_Homework_Framework
                     ? UnityEngine.Object.Instantiate(fxPrefab as GameObject, pos, rot)
                     : UnityEngine.Object.Instantiate(fxPrefab as GameObject, pos, rot, parent);
                 fxInstance.name = fxName + "clone";
+                if (parent != null)
+                {
+                    fxInstance.transform.localPosition = pos;
+                    fxInstance.transform.localRotation = rot;
+                }
                 
                 if (aliveTime > 0)
                 {

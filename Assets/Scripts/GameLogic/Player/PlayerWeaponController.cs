@@ -144,7 +144,7 @@ namespace FPS_Homework_Player
 
         private void TryReload()
         {
-            if (mCurrentWeapon.NeedReload())
+            if (mCurrentWeapon != null && mCurrentWeapon.NeedReload())
             {
                 if (mPlayerInputHandler.IsAim)
                 {
@@ -170,6 +170,12 @@ namespace FPS_Homework_Player
         
         private void HandleWeaponAimAnimation()
         {
+            // no weapon but player press mouse right button
+            if (mCurrentWeapon == null)
+            {
+                mPlayerInputHandler.IsAim = false;
+            }
+            
             if (mPlayerInputHandler.IsAim)
             {
                 AimWeapon();

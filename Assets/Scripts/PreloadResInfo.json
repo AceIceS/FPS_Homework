@@ -8,10 +8,13 @@
     "ImpactFx/RifleBulletHoleDecal",
     "ImpactFx/GrenadeLauncherImpactFX",
     "ImpactFx/GrenadeLauncherHoleDecal",
+    "ImpactFx/ExplosionBody",
+    "ImpactFx/ExplosionBodyBloody",
+    "ImpactFx/ImpactBloodSplat",
     
     "EntityPrefabs/PlayerEntity",
     "EntityPrefabs/EnemyEntityMeleeSmall",
-    
+    "EntityPrefabs/EnemyWeaponPrefabs/Sword",
     
     "PickupItems/GrenadeLauncherAmmoItem",
     "PickupItems/WeaponGrenadeLauncherItem",
@@ -40,9 +43,13 @@
     "RifleBulletHoleDecal",
     "GrenadeLauncherImpactFX",
     "GrenadeLauncherHoleDecal",
+    "ExplosionBody",
+    "ExplosionBodyBloody",
+    "ImpactBloodSplat",
     
     "Entity-000",
     "EnemyEntityMeleeSmall",
+    "EnemyWeaponSword",
     
     "GrenadeLauncherAmmoItem",
     "WeaponGrenadeLauncherItem",

@@ -40,7 +40,6 @@ namespace FPS_Homework_Weapon
     {
         // Weapon Info
         public WeaponType WeaponType;
-        
         public WeaponFireTypeInfo CurrentFireTypeInfo
         {
             get
