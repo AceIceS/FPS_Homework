@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82e738eb97a21d84392db19573b759bb, type: 3}
-  m_Name: WeaponLazerRifle
+  m_Name: WeaponLaserRifle
   m_EditorClassIdentifier: 
   WeaponType: 0
   WeaponPrefab: {fileID: 6848636697956332197, guid: fdb1a5ff551db234d8bfceffc48ce69e, type: 3}
-  CrossHairName: 
-  MuzzleFXName: 
+  CrossHairPrefabName: LaserAimUI
+  MuzzleFXName: RifleMuzzleFX
   PositionInWeaponSlot: {x: 0, y: 0, z: 0}
   RotationInWeaponSlot: {x: 0, y: 0, z: 0}
   CreateMuzzlePosition: {x: 0, y: 0, z: 0}
   CreateMuzzleRotation: {x: 0, y: 0, z: 0}
-  AimPositionOffset: {x: 0, y: 0, z: 0}
-  AimCameraFOV: 60
+  AimPositionOffset: {x: -0.007, y: 0.012, z: -0.003}
+  AimCameraFOV: 45
   WeaponProjectilePrefab: {fileID: 0}
   RecoilX: 0
   RecoilY: 0
@@ -32,4 +32,7 @@ MonoBehaviour:
   Snappiness: 0
   ReturnSpeed: 0
   Owner: {fileID: 0}
-  mFireModes: []
+  mFireModes:
+  - FireMode: 3
+    FireInterval: 0
+  mFireFX: {fileID: 0}

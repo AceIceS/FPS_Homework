@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponType: 1
   WeaponPrefab: {fileID: 2019082213806151388, guid: 6e1b4b5a2bef5e246b9ca3308b4352fd, type: 3}
-  CrossHairName: CrossHairRifle
+  InfoPrefabName: RifleInfo
+  CrossHairPrefabName: RifleAimUI
   MuzzleFXName: RifleMuzzleFX
   PositionInWeaponSlot: {x: 0, y: 0.03, z: 0.02}
   RotationInWeaponSlot: {x: 0, y: 0, z: 0}
   CreateMuzzlePosition: {x: -0.008, y: 0.135, z: 0.5}
   CreateMuzzleRotation: {x: 0, y: 0, z: 0}
   AimPositionOffset: {x: 0, y: 0, z: 0}
-  AimCameraFOV: 25
+  AimCameraFOV: 50
   WeaponProjectilePrefab: {fileID: 11400000, guid: 830da8dbfc586d24da97e1620cee6d5f, type: 2}
   RecoilX: -2
   RecoilY: 1
@@ -40,4 +41,4 @@ MonoBehaviour:
   AmmoPerMagazine: 30
   ReloadTime: 3
   BulletSpreadAngle: 1
-  mTotalAmmo: 120
+  mTotalAmmo: 0

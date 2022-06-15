@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponType: 2
   WeaponPrefab: {fileID: 4031340383259336404, guid: 8ea23a476db0fb04fb704945d164d904, type: 3}
-  CrossHairName: CrossHairGrenadeLauncher
+  InfoPrefabName: GrenadeLauncherInfo
+  CrossHairPrefabName: GrenadeLauncherAimUI
   MuzzleFXName: GrenadeLauncherMuzzleFX
   PositionInWeaponSlot: {x: 0, y: 0.03, z: 0}
   RotationInWeaponSlot: {x: 0, y: 0, z: 0}
@@ -38,3 +39,4 @@ MonoBehaviour:
   AmmoPerMagazine: 5
   ReloadTime: 3
   BulletSpreadAngle: 1
+  mTotalAmmo: 0
