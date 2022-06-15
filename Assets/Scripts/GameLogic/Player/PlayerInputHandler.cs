@@ -66,6 +66,9 @@ public class PlayerInputHandler : MonoBehaviour
             mIsAim = value;
         }
     }
+
+    public UnityAction<bool> OnAimAction;
+    
     public bool Isfire
     {
         get
@@ -280,6 +283,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void OnReadPlayerAimInput(InputAction.CallbackContext actions)
     {
         mIsAim = !mIsAim;
+        OnAimAction.Invoke(!mIsAim);
     }
 
     private void OnReadPlayerFireStart(InputAction.CallbackContext actions)

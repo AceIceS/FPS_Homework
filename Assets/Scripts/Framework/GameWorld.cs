@@ -145,18 +145,26 @@ namespace FPS_Homework_Framework
                 "PistolAmmoItem",
                 mItemRespawnPoints[2].transform.position + Vector3.up / 2,
                 Quaternion.Euler(45,0,0));
+            EntityManager.Instance.AddEntity<AmmoItemEntity>(
+                "LaserAmmoItem",
+                mItemRespawnPoints[3].transform.position + Vector3.up / 2,
+                Quaternion.Euler(45,0,0));
             
             EntityManager.Instance.AddEntity<WeaponItemEntity>(
                 "WeaponGrenadeLauncherItem",
-                mItemRespawnPoints[3].transform.position + Vector3.up / 2,
-                Quaternion.Euler(-45,0,0));
-            EntityManager.Instance.AddEntity<WeaponItemEntity>(
-                "WeaponPistolItem",
                 mItemRespawnPoints[4].transform.position + Vector3.up / 2,
                 Quaternion.Euler(-45,0,0));
             EntityManager.Instance.AddEntity<WeaponItemEntity>(
-                "WeaponRifleItem",
+                "WeaponPistolItem",
                 mItemRespawnPoints[5].transform.position + Vector3.up / 2,
+                Quaternion.Euler(-45,0,0));
+            EntityManager.Instance.AddEntity<WeaponItemEntity>(
+                "WeaponRifleItem",
+                mItemRespawnPoints[6].transform.position + Vector3.up / 2,
+                Quaternion.Euler(-45,0,0));
+            EntityManager.Instance.AddEntity<WeaponItemEntity>(
+                "WeaponLaserRifleItem",
+                mItemRespawnPoints[7].transform.position + Vector3.up / 2,
                 Quaternion.Euler(-45,0,0));
             
             // test enemy
@@ -165,10 +173,10 @@ namespace FPS_Homework_Framework
                 mEnemyRespawnPoints[0].transform.position,
                 Quaternion.identity);
             
-            //var testEnemy =  EntityManager.Instance.AddEntity<EnemyEntityMelee>(
-            //    "EnemyEntityMeleeSmall",
-            //    mEnemyRespawnPoints[1].transform.position,
-            //    Quaternion.identity);
+            var testEnemy =  EntityManager.Instance.AddEntity<EnemyEntityShooterA>(
+                "EnemyEntityShooterA",
+                mEnemyRespawnPoints[1].transform.position,
+                Quaternion.identity);
 
         }
         

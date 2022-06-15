@@ -3,7 +3,8 @@
   [
     "MuzzleFx/RifleMuzzleFX",
     "MuzzleFx/GrenadeLauncherMuzzleFX",
-
+    "MuzzleFx/LaserRifleShoot",
+    
     "ImpactFx/RifleBulletImpactFX",
     "ImpactFx/RifleBulletHoleDecal",
     "ImpactFx/GrenadeLauncherImpactFX",
@@ -15,6 +16,7 @@
     "EntityPrefabs/PlayerEntity",
     "EntityPrefabs/EnemyEntityMeleeSmall",
     "EntityPrefabs/EnemyWeaponPrefabs/Sword",
+    "EntityPrefabs/EnemyEntityShooterA",
     
     "PickupItems/GrenadeLauncherAmmoItem",
     "PickupItems/WeaponGrenadeLauncherItem",
@@ -22,22 +24,34 @@
     "PickupItems/RifleAmmoItem",
     "PickupItems/WeaponPistolItem",
     "PickupItems/PistolAmmoItem",
+    "PickupItems/WeaponLaserRifleItem",
+    "PickupItems/LaserAmmoItem",
     
     "ScriptableObjects/Weapons/GrenadeLauncher/WeaponGrenadeLauncher",
     "ScriptableObjects/Weapons/Rifle/WeaponRifle",
     "ScriptableObjects/Weapons/Pistol/WeaponPistol",
+    "ScriptableObjects/Weapons/LazerRifle/WeaponLaserRifle",
     "ScriptableObjects/WeaponItems/GrenadeLauncherAmmo",
     "ScriptableObjects/WeaponItems/PistolAmmo",
     "ScriptableObjects/WeaponItems/RifleAmmo",
+    "ScriptableObjects/WeaponItems/LaserAmmo",
     
-    "Crosshair/CrossHairGrenadeLauncher",
-    "Crosshair/CrossHairRifle"
+    "Crosshair/DefaultAim",
+    "Crosshair/RifleAim",
+    "Crosshair/GrenadeLauncherAim",
+    "Crosshair/LaserAim",
+    "Crosshair/GrenadeAim",
+    
+    "UI/PistolInfo",
+    "UI/RifleInfo",
+    "UI/GrenadeLauncherInfo"
     
   ],
   "ResourceName":
   [
     "RifleMuzzleFX",
     "GrenadeLauncherMuzzleFX",
+    "LaserRifleShoot",
     
     "RifleBulletImpactFX",
     "RifleBulletHoleDecal",
@@ -50,6 +64,7 @@
     "Entity-000",
     "EnemyEntityMeleeSmall",
     "EnemyWeaponSword",
+    "EnemyEntityShooterA",
     
     "GrenadeLauncherAmmoItem",
     "WeaponGrenadeLauncherItem",
@@ -57,16 +72,27 @@
     "RifleAmmoItem",
     "WeaponPistolItem",
     "PistolAmmoItem",
+    "WeaponLaserRifleItem",
+    "LaserAmmoItem",
     
     "WeaponGrenadeLauncher",
     "WeaponRifle",
     "WeaponPistol",
+    "WeaponLaserRifle",
     "GrenadeLauncherAmmo",
     "PistolAmmo",
     "RifleAmmo",
+    "LaserAmmo",
     
-    "CrossHairGrenadeLauncher",
-    "CrossHairRifle"
+    "DefaultAimUI",
+    "RifleAimUI",
+    "GrenadeLauncherAimUI",
+    "LaserAimUI",
+    "GrenadeAimUI",
+    
+    "PistolInfo",
+    "RifleInfo",
+    "GrenadeLauncherInfo"
     
   ]
   

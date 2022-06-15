@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections;
+using FPS_Homework_Framework;
 using UnityEngine;
 using FPS_Homework_Utils;
 using FPS_Homework_GamePlay;
@@ -26,6 +27,22 @@ namespace FPS_Homework_Weapon
         private bool mIsReloading = false;
         private Coroutine mRelaodCoroutine;
 
+        public override float CurrentAmmo
+        {
+            get
+            {
+                return mCurrentMagazine;
+            }
+        }
+
+        public override float CurrentTotalAmmo
+        {
+            get
+            {
+                return mTotalAmmo;
+            }
+        }
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -41,7 +58,6 @@ namespace FPS_Homework_Weapon
             {
                 mTotalAmmo = 0;
             }
-            
         }
         
         #region Reload

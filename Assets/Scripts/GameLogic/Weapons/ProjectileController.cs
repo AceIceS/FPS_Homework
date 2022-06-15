@@ -7,6 +7,7 @@ using UnityEngine;
 using FPS_Homework_Framework;
 using FPS_Homework_Player;
 using FPS_Homework_Utils;
+using UnityEngine.Events;
 
 
 namespace FPS_Homework_Weapon
@@ -14,6 +15,9 @@ namespace FPS_Homework_Weapon
 
     public class ProjectileController : MonoBehaviour
     {
+        // 
+        public UnityAction<Vector3, Vector3, Collider, float> OnHitTargetAction;
+        
         // Player or other ?
         public GameObject ProjectileCreater;
         public Transform ProjectileTip;
@@ -194,8 +198,11 @@ namespace FPS_Homework_Weapon
             }
         }
         
+        // Hit ground : Show FX
+        // Hit Target : Invoke OnHitAction
         protected virtual void OnHitTarget(Vector3 point, Vector3 normal, Collider collider)
         {
+            
             DamageableTarget dt = collider.GetComponent<DamageableTarget>();
             
             // hit ground
@@ -210,14 +217,10 @@ namespace FPS_Homework_Weapon
             }
             else
             {
-                // blood splat impact effect
-                ResourceManager.Instance.GenerateFxAt("ImpactBloodSplat", point, 
-                    Quaternion.LookRotation(normal), 2.0f);
-                // On Hit
-                EnemyEntityBase eeb = dt.EntityGameObject.GetComponent<EnemyEntityBase>();
-                eeb.OnHit(ProjectileDamage);
-                //Debug.LogError("Hit Collider Name : " + collider.gameObject.name);
-                //Debug.LogError("Hit Target Name : " + obj.name);
+                if (OnHitTargetAction != null)
+                {
+                    OnHitTargetAction.Invoke(point,normal,collider, ProjectileDamage);    
+                }
             }
             // destroy projectile
             Destroy(gameObject);

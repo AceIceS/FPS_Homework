@@ -95,6 +95,7 @@ namespace FPS_Homework_Framework
             }
             
             return false;
+            
         }
 
         
@@ -109,10 +110,25 @@ namespace FPS_Homework_Framework
             mResName2GameObject.TryGetValue(name, out obj);
             return obj as ScriptableObject;
         }
+
+        public Texture2D GetTexture2DRef(string name)
+        {
+            UnityObject texture = null;
+            mResName2GameObject.TryGetValue(name, out texture);
+            return  texture as Texture2D;
+        }
+
+        public GameObject GetGameObjectCopy(string name)
+        {
+            UnityObject obj = null;
+            mResName2GameObject.TryGetValue(name, out obj);
+            return GameObject.Instantiate(obj) as GameObject;
+        }
         
+
         #endregion
-        
-        
+
+
     }
     
     

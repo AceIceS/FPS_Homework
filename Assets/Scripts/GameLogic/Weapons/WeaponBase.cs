@@ -48,7 +48,8 @@ namespace FPS_Homework_Weapon
             }
         }
         public GameObject WeaponPrefab;
-        public string CrossHairName;
+        public string InfoPrefabName;
+        public string CrossHairPrefabName;
         public string MuzzleFXName;
         
         public Vector3 PositionInWeaponSlot;
@@ -79,6 +80,30 @@ namespace FPS_Homework_Weapon
         private WeaponFireTypeInfo[] mFireModes = null;
         private int mFireModeIndex = 0;
 
+        public virtual float CurrentAmmo
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
+        public virtual float CurrentTotalAmmo
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
+        public string AmmoInfo
+        {
+            get
+            {
+                return CurrentAmmo + "/" + CurrentTotalAmmo;
+            }
+        }
+        
         public GameObject WeaponInstance
         {
             get

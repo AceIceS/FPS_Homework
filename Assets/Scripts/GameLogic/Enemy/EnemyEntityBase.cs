@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
-using UnityEngine.AI;
 
 using FPS_Homework_Framework;
+using FPS_Homework_Enemy_AI;
 
 namespace FPS_Homework_Enemy
 {
@@ -51,12 +47,27 @@ namespace FPS_Homework_Enemy
 
         protected virtual void PutIntoBattleGround()
         {
-            
+            mFSM.StartFSM(EnemyStateNames.DecisionState);
         }
 
-        public virtual void OnHit(float damage)
+        public override void UpdateEntity()
         {
+            mFSM.UpdateFSM();
             
+            if (mEnemyUI != null)
+            {
+                mEnemyUI.OnUpdateEnemyUI();
+            }
+
+        }
+
+        public void OnHit(float damage)
+        {
+            mCurrentHealth -= damage;
+            if (mCurrentHealth <= 0)
+            {
+                mFSM.ChangeState(EnemyStateNames.DeadState);
+            }
         }
         
     }

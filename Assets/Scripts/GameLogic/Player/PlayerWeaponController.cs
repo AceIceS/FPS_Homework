@@ -1,9 +1,14 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
-using System.Numerics;
-using FPS_Homework_Weapon;
+
 using UnityEngine;
+
+
+using FPS_Homework_Framework;
+using FPS_Homework_Enemy;
+using FPS_Homework_GamePlay;
+using FPS_Homework_Weapon;
+
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
@@ -23,7 +28,8 @@ namespace FPS_Homework_Player
         // Player Components
         private PlayerInputHandler mPlayerInputHandler;
         private PlayerLocomotionController mPlayerLocomotionController;
-
+        private PlayerHUD mPlayerHUD;
+        
         private Camera mPlayerWeaponCamera;
         private Vector3 mWeaponAimPosition;
         private readonly float mCameraDefaultFOV = 60.0f;
@@ -32,7 +38,7 @@ namespace FPS_Homework_Player
         private float mFiredTime;
         
         private WeaponBase mLastWeapon;
-        private float mSwitchWeaponLastTime;
+        private float mSwitchWeaponLastTime = -1;
         // hide weapon : 1s
         // show weapon : 1s
         // 0.5s
@@ -47,10 +53,13 @@ namespace FPS_Homework_Player
 
             mPlayerInputHandler = GetComponent<PlayerInputHandler>();
             mPlayerInputHandler.OnSwitchWeaponAction += SwitchWeapon;
+            mPlayerInputHandler.OnAimAction += OnAimAction;
             
             mPlayerLocomotionController = GetComponent<PlayerLocomotionController>();
 
             mPlayerWeaponCamera = PlayerWeaponCamera.GetComponent<Camera>();
+
+            mPlayerHUD = GetComponent<PlayerHUD>();
         }
 
         private void OnDisable()
@@ -58,6 +67,7 @@ namespace FPS_Homework_Player
             if (mPlayerInputHandler != null)
             {
                 mPlayerInputHandler.OnSwitchWeaponAction -= SwitchWeapon;
+                mPlayerInputHandler.OnAimAction -= OnAimAction;
             }
         }
 
@@ -90,8 +100,10 @@ namespace FPS_Homework_Player
             else
             {
                 mCurrentWeapon = weapon;
+                mPlayerHUD.OnChangeWeapon(weapon.InfoPrefabName, weapon.CrossHairPrefabName);
+                mPlayerHUD.OnUpdateWeaponAmmoInfo(weapon.AmmoInfo);
             }
-            
+
             return true;
             
         }
@@ -108,6 +120,7 @@ namespace FPS_Homework_Player
                 if (Weapons[i].WeaponType == weaponType)
                 {
                     Weapons[i].AddAmmo(amount);
+                    mPlayerHUD.OnUpdateWeaponAmmoInfo(mCurrentWeapon.AmmoInfo);
                     return true;
                 }
             }
@@ -129,6 +142,7 @@ namespace FPS_Homework_Player
                 {
                     // do some records to generate recoil effect
                     CalculateWeaponRecoilOffsets();
+                    mPlayerHUD.OnUpdateWeaponAmmoInfo(mCurrentWeapon.AmmoInfo);
                 }
             }
             else
@@ -149,7 +163,9 @@ namespace FPS_Homework_Player
                 if (mPlayerInputHandler.IsAim)
                 {
                     mPlayerInputHandler.IsAim = false;
-                    CancelAimWeapon();
+                    CancelAimWeaponAnimation();
+                    mPlayerHUD.SetAimHudActive(true);
+                    mPlayerHUD.OnUpdateWeaponAmmoInfo(mCurrentWeapon.AmmoInfo);
                 }
                 mCurrentWeapon.Reload();
             }
@@ -178,15 +194,15 @@ namespace FPS_Homework_Player
             
             if (mPlayerInputHandler.IsAim)
             {
-                AimWeapon();
+                AimWeaponAnimation();
             }
             else
             {
-                CancelAimWeapon();
+                CancelAimWeaponAnimation();
             }
         }
 
-        private void AimWeapon()
+        private void AimWeaponAnimation()
         {
             // transform weapon position
             // todo:different weapons may have different aim offest
@@ -203,7 +219,7 @@ namespace FPS_Homework_Player
                 AimCameraScaleSpeed * Time.deltaTime); 
         }
 
-        private void CancelAimWeapon()
+        private void CancelAimWeaponAnimation()
         {
             // 
             mWeaponAimPosition = Vector3.Lerp(mWeaponAimPosition,
@@ -217,6 +233,11 @@ namespace FPS_Homework_Player
                 mPlayerWeaponCamera.fieldOfView,
                 mCameraDefaultFOV,
                 AimCameraScaleSpeed * Time.deltaTime); 
+        }
+
+        private void OnAimAction(bool flag)
+        {
+            mPlayerHUD.SetAimHudActive(flag);
         }
         
         private void CalculateWeaponRecoilOffsets()
@@ -289,6 +310,7 @@ namespace FPS_Homework_Player
                     // show new weapon
                     if (!mCurrentWeapon.WeaponInstance.activeSelf)
                     {
+                        
                         mCurrentWeapon.ShowWeapon();
                     }
                     mCurrentWeapon.WeaponInstance.transform.localPosition =
@@ -338,6 +360,8 @@ namespace FPS_Homework_Player
             mCurrentWeapon = Weapons[mCurrentWeaponIndex];
             mUpdateSwitchWeaponAnim = true;
             mIsSwitchDownWeapon = true;
+            mPlayerHUD.OnChangeWeapon(mCurrentWeapon.InfoPrefabName, mCurrentWeapon.CrossHairPrefabName);
+            mPlayerHUD.OnUpdateWeaponAmmoInfo(mCurrentWeapon.AmmoInfo);
             // current weapon
             // switched weapon
         }
@@ -345,7 +369,7 @@ namespace FPS_Homework_Player
         private bool CheckSwitchWeaponValid()
         {
             float triggerTime = Time.time;
-            if (triggerTime - mSwitchWeaponLastTime < mSwitchWeaponIntervalTime)
+            if (mSwitchWeaponLastTime >= 0 && triggerTime - mSwitchWeaponLastTime < mSwitchWeaponIntervalTime)
             {
                 return false;
             }
@@ -361,6 +385,22 @@ namespace FPS_Homework_Player
             }
 
             return true;
+        }
+
+        protected override void OnHitTarget(Vector3 point, Vector3 normal, Collider collider, float projectileDamage)
+        {
+            DamageableTarget dt = collider.GetComponent<DamageableTarget>();
+            
+            // blood splat impact effect
+            ResourceManager.Instance.GenerateFxAt("ImpactBloodSplat", point, 
+                Quaternion.LookRotation(normal), 2.0f);
+            // On Hit
+            EnemyEntityBase eeb = dt.EntityGameObject.GetComponent<EnemyEntityBase>();
+            eeb.OnHit(projectileDamage);
+            //Debug.LogError("Hit Collider Name : " + collider.gameObject.name);
+            //Debug.LogError("Hit Target Name : " + obj.name);
+            
+            mPlayerHUD.OnHitTarget();
         }
         
         

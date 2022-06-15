@@ -23,7 +23,8 @@ namespace FPS_Homework_Weapon
             controller.MaxAliveTime = MaxAliveTime;
             controller.ProjectileInitialPos = InitialPosition;
             controller.ProjectileSpeed = ProjectileFlySpeed;
-
+            
+            
             controller.OnProjectileShot();
         }
     }

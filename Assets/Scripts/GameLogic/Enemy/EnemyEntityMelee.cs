@@ -46,32 +46,8 @@ namespace FPS_Homework_Enemy
             });
             
         }
-
-        protected override void PutIntoBattleGround()
-        {
-            mFSM.StartFSM(EnemyStateNames.DecisionState);
-        }
         
-        public override void UpdateEntity()
-        {
-            mFSM.UpdateFSM();
-            
-            if (mEnemyUI != null)
-            {
-                mEnemyUI.OnUpdateEnemyUI();
-            }
-            
-        }
-
-        public override void OnHit(float damage)
-        {
-            mCurrentHealth -= damage;
-            if (mCurrentHealth <= 0)
-            {
-                mFSM.ChangeState(EnemyStateNames.DeadState);
-            }
-
-        }
+        
         
         #region Animation Evnet
         

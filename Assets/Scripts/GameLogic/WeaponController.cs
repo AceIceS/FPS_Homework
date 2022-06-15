@@ -36,7 +36,16 @@ namespace FPS_Homework_Weapon
             }
             return false;
         }
-        
+
+        public void BindHitAction(ProjectileController pc)
+        {
+            pc.OnHitTargetAction += OnHitTarget;
+        }
+        // what if weapon hit damageable target ?
+        protected virtual void OnHitTarget(Vector3 point, Vector3 normal, Collider collider, float projectileDamage)
+        {
+        }
+
     }
 
 }

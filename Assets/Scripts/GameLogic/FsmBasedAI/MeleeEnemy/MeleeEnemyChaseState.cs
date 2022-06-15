@@ -33,9 +33,9 @@ namespace FPS_Homework_Enemy_AI
             
             Vector3 vel = mNavMeshAgent.velocity;
             float vert = vel.x;
-            float hor = vel.z;
-            
-            mAnimator.SetFloat("vertical",vert);
+            //float hor = vel.z;
+            vert = Mathf.Clamp(vert, 0.5f, 1.0f);
+            mAnimator.SetFloat("vertical", vert);
             //mAnimator.SetFloat("horizontal",hor);
             
             // face player

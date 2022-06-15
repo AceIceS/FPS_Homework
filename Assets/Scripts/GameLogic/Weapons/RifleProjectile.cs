@@ -11,8 +11,6 @@ namespace FPS_Homework_Weapon
 
         protected override void OnProjectileGenerated(WeaponBase weapon)
         {
-            base.OnProjectileGenerated(weapon);
-            
             // add controller to move this projectile
             var controller =  mNewProjectileInstance.GetComponent<ProjectileController>();
             // pass parameters
@@ -23,8 +21,12 @@ namespace FPS_Homework_Weapon
             controller.ProjectileInitialPos = InitialPosition;
             controller.ProjectileSpeed = ProjectileFlySpeed;
 
-            controller.OnProjectileShot();
+            WeaponController wc = weapon.Owner.GetComponent<WeaponController>();
+            wc.BindHitAction(controller);
             
+            
+            controller.OnProjectileShot();
+
         }
         
     }
