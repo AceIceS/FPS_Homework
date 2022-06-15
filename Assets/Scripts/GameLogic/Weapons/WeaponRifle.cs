@@ -89,21 +89,25 @@ namespace FPS_Homework_Weapon
 
         private IEnumerator ReloadFinished()
         {
+            // Fill magazine
+            int ammoToBeFilled = AmmoPerMagazine - mCurrentMagazine;
+            if (mTotalAmmo >= ammoToBeFilled)
+            {
+                mCurrentMagazine = AmmoPerMagazine;
+                mTotalAmmo -= ammoToBeFilled;
+            }
+            else
+            {
+                mCurrentMagazine += mTotalAmmo;
+                mTotalAmmo = 0;
+            }
+            
+            // wait for reload animation
             yield return new WaitForSeconds(ReloadTime);
             //
             mIsReloading = false;
             mWeaponAnimator.ResetTrigger(mReloadAnimName);
             yield return new WaitForSeconds(0.5f);
-
-            if (mTotalAmmo >= AmmoPerMagazine)
-            {
-                mCurrentMagazine = AmmoPerMagazine;
-            }
-            else
-            {
-                mCurrentMagazine = mTotalAmmo;
-            }
-            mTotalAmmo -= mCurrentMagazine;
 
         }
 

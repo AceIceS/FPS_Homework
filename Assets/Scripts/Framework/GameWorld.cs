@@ -173,10 +173,10 @@ namespace FPS_Homework_Framework
                 mEnemyRespawnPoints[0].transform.position,
                 Quaternion.identity);
             
-            var testEnemy =  EntityManager.Instance.AddEntity<EnemyEntityShooterA>(
-                "EnemyEntityShooterA",
-                mEnemyRespawnPoints[1].transform.position,
-                Quaternion.identity);
+            //var testEnemy =  EntityManager.Instance.AddEntity<EnemyEntityShooterA>(
+            //    "EnemyEntityShooterA",
+            //    mEnemyRespawnPoints[1].transform.position,
+            //    Quaternion.identity);
 
         }
         

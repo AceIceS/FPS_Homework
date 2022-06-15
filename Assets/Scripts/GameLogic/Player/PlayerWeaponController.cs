@@ -165,9 +165,10 @@ namespace FPS_Homework_Player
                     mPlayerInputHandler.IsAim = false;
                     CancelAimWeaponAnimation();
                     mPlayerHUD.SetAimHudActive(true);
-                    mPlayerHUD.OnUpdateWeaponAmmoInfo(mCurrentWeapon.AmmoInfo);
+                    
                 }
                 mCurrentWeapon.Reload();
+                mPlayerHUD.OnUpdateWeaponAmmoInfo(mCurrentWeapon.AmmoInfo);
             }
         }
         
