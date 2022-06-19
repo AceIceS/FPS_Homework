@@ -14,7 +14,7 @@ namespace FPS_Homework_Framework
 
         public const string TestSceneResPath = "Scenes/TestScene";
 
-        public const string SceneResPath = "";
+        public const string SceneResPath = "Scenes/BattleGround_1";
 
         public const string ResInfoJsonPath = "/Scripts/PreloadResInfo.json";
 

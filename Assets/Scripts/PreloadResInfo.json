@@ -12,6 +12,7 @@
     "ImpactFx/ExplosionBody",
     "ImpactFx/ExplosionBodyBloody",
     "ImpactFx/ImpactBloodSplat",
+    "ImpactFx/BomberExplosion",
     
     "EntityPrefabs/PlayerEntity",
     "EntityPrefabs/EnemyEntityMeleeSmall",
@@ -60,6 +61,7 @@
     "ExplosionBody",
     "ExplosionBodyBloody",
     "ImpactBloodSplat",
+    "BomberExplosion",
     
     "Entity-000",
     "EnemyEntityMeleeSmall",

@@ -6,9 +6,9 @@ namespace FPS_Homework_Enemy_AI
 {
 
 
-    public class MeleeEnemyHesitateState : EnemyBaseState
+    public class EnemyHesitateState : EnemyBaseState
     {
-        private float mHesitateTime = 1.5f;
+        public float HesitateTime;
         
         private float mEnterStateTime;
         
@@ -19,7 +19,7 @@ namespace FPS_Homework_Enemy_AI
 
         public override void OnUpdateState()
         {
-            if (Time.time - mEnterStateTime >= mHesitateTime)
+            if (Time.time - mEnterStateTime >= HesitateTime)
             {
                 ChangeState(EnemyStateNames.DecisionState);
             }

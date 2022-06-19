@@ -8,8 +8,9 @@ using FPS_Homework_Framework;
 namespace FPS_Homework_Enemy_AI
 {
 
-    public class MeleeEnemyChaseState : EnemyBaseState
+    public class EnemyChaseState : EnemyBaseState
     {
+        public float Distance = 0;
         
         public override void OnInitState(FSM fsm)
         {
@@ -58,7 +59,7 @@ namespace FPS_Homework_Enemy_AI
         // 
         private bool IsNearPlayer()
         {
-            return DistanceBetweenPlayerOnXZPlane() <= 1.5f;
+            return DistanceBetweenPlayerOnXZPlane() <= Distance;
         }
     }
 

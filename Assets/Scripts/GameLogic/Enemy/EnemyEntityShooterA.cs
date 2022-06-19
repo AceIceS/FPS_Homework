@@ -20,15 +20,20 @@ namespace FPS_Homework_Enemy
 
         protected override void OnInitFSM()
         {
-            var decisionState = new MeleeEnemyDecisionState();
+            var decisionState = new ShooterADecisionState();
             decisionState.StateName = "Decision";
-            var chaseState = new MeleeEnemyChaseState();
+            var chaseState = new EnemyChaseState();
+            chaseState.Distance = 6.0f;
             chaseState.StateName = "Chase";
             var attackState = new ShooterAAttackState();
             attackState.StateName = "Attack";
+            var throwGrenadeState = new ShooterAThrowGrenadeState();
+            throwGrenadeState.StateName = "ShooterAThrowGrenade";
             var deadState = new EnemyDeadState();
             deadState.StateName = "Dead";
-            var hesitateState = new MeleeEnemyHesitateState();
+            deadState.OnEnemyEntityEnterDeadState += OnEntityEnterDeadState;
+            var hesitateState = new EnemyHesitateState();
+            hesitateState.HesitateTime = 1.5f;
             hesitateState.StateName = "Hesitate";
             
             mFSM = FSM.CreateFSM(this,new List<FSMState>()
@@ -36,11 +41,19 @@ namespace FPS_Homework_Enemy
                 decisionState,
                 chaseState,
                 attackState,
+                throwGrenadeState,
                 deadState,
                 hesitateState
             });
             
         }
+
+
+        private void OnEntityEnterDeadState(GameObject entity, Animator an)
+        {
+            
+        }
+        
         
     }
 

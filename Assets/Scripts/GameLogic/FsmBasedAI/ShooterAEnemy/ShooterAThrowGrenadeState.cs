@@ -7,11 +7,10 @@ using FPS_Homework_Framework;
 namespace FPS_Homework_Enemy_AI
 {
 
-    public class ShooterAAttackState : EnemyBaseState
+
+    public class ShooterAThrowGrenadeState : EnemyBaseState
     {
 
-        
-        
     }
 
 }

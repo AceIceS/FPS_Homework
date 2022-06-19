@@ -41,6 +41,7 @@ namespace FPS_Homework_Framework
         private void  StartGameInternal()
         {
             SceneManager.Instance.LoadSceneAsync(FrameworkConstants.TestSceneResPath,OnSceneLoaded);
+            //SceneManager.Instance.LoadSceneAsync(FrameworkConstants.SceneResPath,OnSceneLoaded);
         }
 
         private void OnSceneLoaded()

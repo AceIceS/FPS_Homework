@@ -26,14 +26,16 @@ namespace FPS_Homework_Enemy
         {
             var decisionState = new MeleeEnemyDecisionState();
             decisionState.StateName = "Decision";
-            var chaseState = new MeleeEnemyChaseState();
+            var chaseState = new EnemyChaseState();
+            chaseState.Distance = 1.5f;
             chaseState.StateName = "Chase";
             var attackState = new MeleeEnemyAttackState();
             attackState.StateName = "Attack";
             var deadState = new EnemyDeadState();
             deadState.StateName = "Dead";
             deadState.OnEnemyEntityEnterDeadState += OnEntityEnterDeadState;
-            var hesitateState = new MeleeEnemyHesitateState();
+            var hesitateState = new EnemyHesitateState();
+            hesitateState.HesitateTime = 1.0f;
             hesitateState.StateName = "Hesitate";
             
             mFSM = FSM.CreateFSM(this,new List<FSMState>()
