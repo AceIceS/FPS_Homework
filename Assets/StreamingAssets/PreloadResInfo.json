@@ -1,0 +1,109 @@
+{
+  "ResourcePath":
+  [
+    "MuzzleFx/RifleMuzzleFX",
+    "MuzzleFx/GrenadeLauncherMuzzleFX",
+    "MuzzleFx/LaserRifleShoot",
+    
+    "ImpactFx/RifleBulletImpactFX",
+    "ImpactFx/RifleBulletHoleDecal",
+    "ImpactFx/GrenadeLauncherImpactFX",
+    "ImpactFx/GrenadeLauncherHoleDecal",
+    "ImpactFx/ExplosionBody",
+    "ImpactFx/ExplosionBodyBloody",
+    "ImpactFx/ImpactBloodSplat",
+    "ImpactFx/BomberExplosion",
+    "ImpactFx/BomberDronePrepare",
+    "ImpactFx/ImpactMetal",
+    
+    "EntityPrefabs/PlayerEntity",
+    "EntityPrefabs/EnemyEntityMeleeSmall",
+    "EntityPrefabs/EnemyWeaponPrefabs/Sword",
+    "EntityPrefabs/EnemyEntityShooterA",
+    "EntityPrefabs/EnemyBomberDrone",
+    "EntityPrefabs/EnemyDrone",
+    
+    "PickupItems/GrenadeLauncherAmmoItem",
+    "PickupItems/WeaponGrenadeLauncherItem",
+    "PickupItems/WeaponRifleItem",
+    "PickupItems/RifleAmmoItem",
+    "PickupItems/WeaponPistolItem",
+    "PickupItems/PistolAmmoItem",
+    "PickupItems/WeaponLaserRifleItem",
+    "PickupItems/LaserAmmoItem",
+    
+    "ScriptableObjects/Weapons/GrenadeLauncher/WeaponGrenadeLauncher",
+    "ScriptableObjects/Weapons/Rifle/WeaponRifle",
+    "ScriptableObjects/Weapons/Pistol/WeaponPistol",
+    "ScriptableObjects/Weapons/LazerRifle/WeaponLaserRifle",
+    "ScriptableObjects/WeaponItems/GrenadeLauncherAmmo",
+    "ScriptableObjects/WeaponItems/PistolAmmo",
+    "ScriptableObjects/WeaponItems/RifleAmmo",
+    "ScriptableObjects/WeaponItems/LaserAmmo",
+    
+    "Crosshair/DefaultAim",
+    "Crosshair/RifleAim",
+    "Crosshair/GrenadeLauncherAim",
+    "Crosshair/LaserAim",
+    "Crosshair/GrenadeAim",
+    
+    "UI/PistolInfo",
+    "UI/RifleInfo",
+    "UI/GrenadeLauncherInfo"
+    
+  ],
+  "ResourceName":
+  [
+    "RifleMuzzleFX",
+    "GrenadeLauncherMuzzleFX",
+    "LaserRifleShoot",
+    
+    "RifleBulletImpactFX",
+    "RifleBulletHoleDecal",
+    "GrenadeLauncherImpactFX",
+    "GrenadeLauncherHoleDecal",
+    "ExplosionBody",
+    "ExplosionBodyBloody",
+    "ImpactBloodSplat",
+    "BomberExplosion",
+    "BomberDronePrepare",
+    "ImpactMetal",
+    
+    "Entity-000",
+    "EnemyEntityMeleeSmall",
+    "EnemyWeaponSword",
+    "EnemyEntityShooterA",
+    "EnemyBomberDrone",
+    "EnemyDrone",
+    
+    "GrenadeLauncherAmmoItem",
+    "WeaponGrenadeLauncherItem",
+    "WeaponRifleItem",
+    "RifleAmmoItem",
+    "WeaponPistolItem",
+    "PistolAmmoItem",
+    "WeaponLaserRifleItem",
+    "LaserAmmoItem",
+    
+    "WeaponGrenadeLauncher",
+    "WeaponRifle",
+    "WeaponPistol",
+    "WeaponLaserRifle",
+    "GrenadeLauncherAmmo",
+    "PistolAmmo",
+    "RifleAmmo",
+    "LaserAmmo",
+    
+    "DefaultAimUI",
+    "RifleAimUI",
+    "GrenadeLauncherAimUI",
+    "LaserAimUI",
+    "GrenadeAimUI",
+    
+    "PistolInfo",
+    "RifleInfo",
+    "GrenadeLauncherInfo"
+    
+  ]
+  
+}
