@@ -31,6 +31,36 @@ Transform:
   m_Father: {fileID: 5284414923145508727}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -22.89, y: 243.91699, z: -163.863}
+--- !u!1 &1678428198633493059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1218167150006521177}
+  m_Layer: 0
+  m_Name: WeaponSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1218167150006521177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678428198633493059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.003, y: 0.1333, z: 0.5343}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5959074426045861447}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5278226740386956853
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5278288536573210253
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5278354485802387213
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5278443319709234021
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5278477846794364293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5278895146272668005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1206,7 @@ GameObject:
   - component: {fileID: 265041140614704598}
   - component: {fileID: 2382523368028665386}
   - component: {fileID: 3886590152946341941}
+  - component: {fileID: 5815138626180830637}
   m_Layer: 0
   m_Name: EnemyEntityShooterA
   m_TagString: Entity
@@ -1269,6 +1305,26 @@ MonoBehaviour:
   EnemyEntity: {fileID: 0}
   HealthBarPivot: {fileID: 3652347997962023529}
   HealthBarImage: {fileID: 706195610100840110}
+--- !u!114 &5815138626180830637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278895146272668005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adba8390d45da54b8a7c6f3c2a571d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapons:
+  - {fileID: 11400000, guid: 03489b2942500fe469d86b2b2e823cfe, type: 2}
+  WeaponSlot: {fileID: 5959074426045861447}
+  WeaponDefaultPosition: {fileID: 0}
+  WeaponAimPosition: {fileID: 0}
+  AimLineStartPos: {fileID: 0}
+  mAimLine: {fileID: 0}
+  Melee: {fileID: 0}
 --- !u!1 &5278908931497511067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,6 +1508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5279147093424418435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,6 +1853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5279234877181782609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,6 +2075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5279283162410625943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,6 +2453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5279818453889641329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,6 +2544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 5278895146272668005}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &5279825716394072225
 GameObject:
   m_ObjectHideFlags: 0

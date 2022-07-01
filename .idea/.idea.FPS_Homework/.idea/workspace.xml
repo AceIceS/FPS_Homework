@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdf35c87-0b18-4b25-a72a-3a3407b160ec" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -8,47 +11,92 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../PolygonDarkSouls/Assets/Scripts/PlayerScripts/InputHnadler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../PolygonDarkSouls/Assets/Scripts/PlayerScripts/PlayerManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerLocomotionController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/a7/60ddf0ab/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../RPG_Deom/Assets/Scripts/Player/PlayerLocomotion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/EnemyWeapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/EnemyWeaponProjectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/f7/0ec71dc0/UnityAction`4.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyWeaponController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyBomber.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/e7/2810feb1/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5A92AD44-406B-4318-9677-3A464E9EC96E/d2/b4a8d8b5/EventArgs.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/60/9b970f2e/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/b7/d2135a9e/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/a7/60ddf0ab/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/c3/c431bd03/UnityAction`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../RPG_Deom/Assets/Scripts/Player/PlayerLocomotion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/7d/4265d18f/Camera.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/c4/57d18d50/SerializeField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../RPG_Deom/Assets/Scripts/Player/InputHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/e7/2810feb1/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/71/6c5f979a/ScriptableObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/DroneEnemy/DroneEnemyChaseState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/ProjectileBaseController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/GameProcedure.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/Items/ScriptableObjectItemBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B547A396-E633-4A95-A2AF-58CD2B39C4C4/24/711a91d2/AnimationClip.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/de/a8a8b298/Sprite.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/DroneEnemy/DroneEnemyAttackState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB0CE7C-66DA-485E-AD1D-2EA5A2182103/58/0bd51bef/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B547A396-E633-4A95-A2AF-58CD2B39C4C4/7b/574aa216/AnimationEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CAFB29D5-2338-47FB-B4ED-CF8D7C32B1E3/0a/b367adba/EventHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PolygonDarkSouls/Assets/Scripts/PlayerScripts/InputHnadler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/EnemyStateNames.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Framework/FSM/FSMState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/WeaponMelee.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponItemBase.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponFlameEjector.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/WeaponController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PartilcesManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ParticlesManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Utils/ParticlesManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Utils/GameResourcesPath.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/InitializeGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/ShooterAEnemy/ShooterAThrowGrenadeState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/ShooterAEnemy/ShooterADecisionState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/ShooterAEnemy/ShooterAAttackState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/BomberDroneEnemy/BomberDroneEnemyAttackState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PreloadResInfo.json" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/MeleeEnemy/MeleeEnemyDecisionState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyDrone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/DroneEnemy/DroneEnemyChaseState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyDrone/EnemyDroneWeaponController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyDrone/EnemyWeaponController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerInputHandler.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/SceneManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/FrameworkConstants.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/Resources/ResourceManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utils/RuntimeParticlesManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/ProjectileBase.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInputHandler.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/RifleProjectile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Utils/RuntimeParticlesResPath.json" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/GrenadeLauncherProjcetileController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/GrenadeLauncherProjectile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/GrenadeLauncherProjectileController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponGrenadeLauncher.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponSniperRifle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameUtilites.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/ProjectileController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DamageableTarget.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponRifle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerWeaponController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponBase.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerLocomotionController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/WeaponBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/MeleeEnemy/MeleeEnemyAttackState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/WeaponMelee.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyWeaponController.cs" />
+      <option value="$PROJECT_DIR$/Assets/StreamingAssets/PreloadResInfo.json" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/DamageableTarget.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerWeaponController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/GrenadeLauncherProjectileController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/DroneEnemy/DroneEnemyAttackState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/EnemyWeaponProjectile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/EnemyWeapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/ProjectileBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/GameEntrance.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/WeaponController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/FsmBasedAI/CommonStates/EnemyChaseState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/ProjectileController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/ProjectileBaseController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Weapons/EnemyProjectileController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyEntityShooterA.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerCampassHUD.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerCompassMarker.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerHUD.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerHUD/PlayerCompassMarker.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerHUD/PlayerCompassElement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/GameProcedure.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/Entity/EntityGroup.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/Entity/Entity.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyDrone/EnemyDrone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyEntityMelee.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyBomber.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/GameWorld.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerEntity.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Player/PlayerHUD/PlayerHUD.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/Enemy/EnemyEntityBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameLogic/GameProcedure.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Framework/Entity/EntityManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="26PiAcU3zdW9yIE9YodJNKrcOuD" />
@@ -65,6 +113,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../TestBuild\FPS_Homework.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="Y:\TestBuild" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />

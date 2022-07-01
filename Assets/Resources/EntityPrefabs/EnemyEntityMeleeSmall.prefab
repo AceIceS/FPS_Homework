@@ -93,8 +93,9 @@ GameObject:
   - component: {fileID: 7663508725121968140}
   - component: {fileID: 5141809919732589503}
   - component: {fileID: 726020766038465776}
-  - component: {fileID: 8979187535220963157}
   - component: {fileID: 715272586128180803}
+  - component: {fileID: 4072206553500952814}
+  - component: {fileID: 5039278815649153666}
   m_Layer: 0
   m_Name: EnemyEntityMeleeSmall
   m_TagString: Entity
@@ -174,22 +175,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8979187535220963157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7712457742003903832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4eb1c39e4de2cb4bb23e6704f263f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Weapons: []
-  WeaponSlot: {fileID: 445157114501947050}
-  WeaponDefaultPosition: {fileID: 0}
-  WeaponAimPosition: {fileID: 0}
 --- !u!114 &715272586128180803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +190,39 @@ MonoBehaviour:
   EnemyEntity: {fileID: 0}
   HealthBarPivot: {fileID: 8152489731356411526}
   HealthBarImage: {fileID: 5350311794221400641}
+--- !u!114 &4072206553500952814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712457742003903832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adba8390d45da54b8a7c6f3c2a571d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapons: []
+  WeaponSlot: {fileID: 0}
+  WeaponDefaultPosition: {fileID: 0}
+  WeaponAimPosition: {fileID: 0}
+  AimLineStartPos: {fileID: 0}
+  mAimLine: {fileID: 0}
+  Melee: {fileID: 4213260258750904866}
+--- !u!114 &5039278815649153666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712457742003903832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1670bd1c63e0c444cacfbb6c8d9c02ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CompassMarkerPrefab: {fileID: 4338484168916127029, guid: 0aec81ba9deb9d44cb9900feb0fa7d15, type: 3}
+  TextDirection: 
 --- !u!1 &7712473433426036070
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7712490437990835238
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7712535838222717480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7712652794575617670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,6 +1669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7713070589422406510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,6 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7713096395916734720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,6 +2177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7713135282620813528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,6 +2318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7713188693245693196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,6 +2675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7713426275145339502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,6 +2971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7713973512673599792
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,6 +3190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityGameObject: {fileID: 7712457742003903832}
+  ImpactFXName: ImpactBloodSplat
 --- !u!1 &7714068574945950116
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,6 +3482,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 445157114501947050}
     m_Modifications:
+    - target: {fileID: 1280355604338771337, guid: 3a2b924be12dfc44e980164c115b1e21, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5857679753824484549, guid: 3a2b924be12dfc44e980164c115b1e21, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3509,6 +3541,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5857679753824484549, guid: 3a2b924be12dfc44e980164c115b1e21, type: 3}
   m_PrefabInstance: {fileID: 386284756905813551}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6053901162473786960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5863577832367057023, guid: 3a2b924be12dfc44e980164c115b1e21, type: 3}
+  m_PrefabInstance: {fileID: 386284756905813551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4213260258750904866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053901162473786960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6a9844e3761774cb7afec94bfb3deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponController: {fileID: 4072206553500952814}
 --- !u!1001 &3010503374931695448
 PrefabInstance:
   m_ObjectHideFlags: 0
