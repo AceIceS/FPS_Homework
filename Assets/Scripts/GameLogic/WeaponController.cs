@@ -37,7 +37,7 @@ namespace FPS_Homework_Weapon
             return false;
         }
 
-        public void BindHitAction(ProjectileController pc)
+        public void BindHitAction(ProjectileBaseController pc)
         {
             pc.OnHitTargetAction += OnHitTarget;
         }

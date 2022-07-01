@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace FPS_Homework_Utils
@@ -39,8 +38,8 @@ namespace FPS_Homework_Utils
             mParticleName2GameObject = new Dictionary<string, GameObject>();
             mRuntimeParticlesResPathInfo = new RuntimeParticlesResPathInfo();
             // Deserialize json 
-            StreamReader sr = new StreamReader(Application.dataPath + 
-                                               "/Scripts/Utils/RuntimeParticlesResPath.json");
+            StreamReader sr = new StreamReader(Application.streamingAssetsPath + 
+                                               "/RuntimeParticlesResPath.json");
             string str = sr.ReadToEnd();
             //Debug.LogError(str);
             JsonUtility.FromJsonOverwrite(str, mRuntimeParticlesResPathInfo);
@@ -51,12 +50,13 @@ namespace FPS_Homework_Utils
             for (int i = 0; i < mRuntimeParticlesResPathInfo.FxPrefabPath.Count; ++i)
             {
                 GameObject fxPrefab = Resources.Load<GameObject>(mRuntimeParticlesResPathInfo.FxPrefabPath[i]);
-                if (fxPrefab != null)
+                
+                if (fxPrefab != null && 
+                    !mParticleName2GameObject.ContainsKey(mRuntimeParticlesResPathInfo.FxName[i]))
                 {
                     mParticleName2GameObject.Add(mRuntimeParticlesResPathInfo.FxName[i], fxPrefab);
                 }
-                else 
-                    Debug.LogError("null");
+
             }
         }
         

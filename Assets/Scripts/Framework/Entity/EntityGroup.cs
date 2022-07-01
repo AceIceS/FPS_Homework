@@ -39,6 +39,21 @@ namespace FPS_Homework_Framework
             mEntities.Add(entity);
         }
 
+        public void DeleteEntity(Entity e)
+        {
+            if (mEntities != null)
+            {
+                for(int i = 0;i < mEntities.Count;++i)
+                {
+                    if (ReferenceEquals(e, mEntities[i]))
+                    {
+                        mEntities.Remove(mEntities[i]);
+                        break;
+                    }
+                }
+            }
+        }
+        
         // iterator
         public IEnumerator GetEnumerator()
         {

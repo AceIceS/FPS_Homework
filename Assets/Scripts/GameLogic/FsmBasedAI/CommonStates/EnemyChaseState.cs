@@ -11,6 +11,9 @@ namespace FPS_Homework_Enemy_AI
     public class EnemyChaseState : EnemyBaseState
     {
         public float Distance = 0;
+        public string NextStateName;
+        
+        public bool FreezeRotationXZ = true;
         
         public override void OnInitState(FSM fsm)
         {
@@ -32,20 +35,31 @@ namespace FPS_Homework_Enemy_AI
             mNavMeshAgent.destination = 
                 GameWorld.TheGameWorld.PlayerGameObject.transform.position;
             
-            Vector3 vel = mNavMeshAgent.velocity;
-            float vert = vel.x;
-            //float hor = vel.z;
-            vert = Mathf.Clamp(vert, 0.5f, 1.0f);
-            mAnimator.SetFloat("vertical", vert);
-            //mAnimator.SetFloat("horizontal",hor);
-            
+            // enemy may have no 
+            if (mAnimator != null)
+            {
+                Vector3 vel = mNavMeshAgent.velocity;
+                float vert = vel.x;
+                //float hor = vel.z;
+                vert = Mathf.Clamp(vert, 0.5f, 1.0f);
+                mAnimator.SetFloat("vertical", vert);
+                //mAnimator.SetFloat("horizontal",hor);
+            }
+
             // face player
             mFsm.FSMEntity.transform.LookAt(mPlayer.transform);
+            if (FreezeRotationXZ)
+            {
+                Vector3 localEulerAngles = mFsm.FSMEntity.transform.localEulerAngles;
+                localEulerAngles.x = localEulerAngles.z = 0;
+                mFsm.FSMEntity.transform.localEulerAngles = localEulerAngles;
+            }
             
-            // check if player is in attack range
+            
+            // check if player is in range
             if (IsNearPlayer())
             {
-                ChangeState(EnemyStateNames.DecisionState);
+                ChangeState(NextStateName);
             }
             
         }

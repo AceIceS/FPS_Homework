@@ -16,6 +16,7 @@ namespace FPS_Homework_Framework
     {
         public EntityStatus EntityStatus = EntityStatus.Active;
         public EntityGroup Group;
+        public int ID;
         #region override Funcs
         
         protected virtual void Start()
@@ -37,6 +38,11 @@ namespace FPS_Homework_Framework
         public virtual void LateUpdateEntity()
         {
             
+        }
+
+        public void  DestroySelf()
+        {
+            Destroy(gameObject,3.0f);
         }
 
         #endregion

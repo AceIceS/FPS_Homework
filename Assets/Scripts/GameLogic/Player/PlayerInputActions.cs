@@ -250,6 +250,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""d61301ba-5ba0-4fab-88b8-fcd4fc50f074"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -340,6 +349,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""CallMainMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aca3181f-3ecb-455b-ae16-42c339f91675"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -363,6 +383,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_PlayerInstructions_Reload = m_PlayerInstructions.FindAction("Reload", throwIfNotFound: true);
         m_PlayerInstructions_Interact = m_PlayerInstructions.FindAction("Interact", throwIfNotFound: true);
         m_PlayerInstructions_CallMainMenu = m_PlayerInstructions.FindAction("CallMainMenu", throwIfNotFound: true);
+        m_PlayerInstructions_Pause = m_PlayerInstructions.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -495,6 +516,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInstructions_Reload;
     private readonly InputAction m_PlayerInstructions_Interact;
     private readonly InputAction m_PlayerInstructions_CallMainMenu;
+    private readonly InputAction m_PlayerInstructions_Pause;
     public struct PlayerInstructionsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -507,6 +529,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_PlayerInstructions_Reload;
         public InputAction @Interact => m_Wrapper.m_PlayerInstructions_Interact;
         public InputAction @CallMainMenu => m_Wrapper.m_PlayerInstructions_CallMainMenu;
+        public InputAction @Pause => m_Wrapper.m_PlayerInstructions_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInstructions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -540,6 +563,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CallMainMenu.started -= m_Wrapper.m_PlayerInstructionsActionsCallbackInterface.OnCallMainMenu;
                 @CallMainMenu.performed -= m_Wrapper.m_PlayerInstructionsActionsCallbackInterface.OnCallMainMenu;
                 @CallMainMenu.canceled -= m_Wrapper.m_PlayerInstructionsActionsCallbackInterface.OnCallMainMenu;
+                @Pause.started -= m_Wrapper.m_PlayerInstructionsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerInstructionsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerInstructionsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerInstructionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -568,6 +594,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CallMainMenu.started += instance.OnCallMainMenu;
                 @CallMainMenu.performed += instance.OnCallMainMenu;
                 @CallMainMenu.canceled += instance.OnCallMainMenu;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -590,5 +619,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnCallMainMenu(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

@@ -9,19 +9,33 @@ namespace FPS_Homework_Player
 
     public class PlayerEntity : Entity
     {
+        public bool PlayerIsDead
+        {
+            get
+            {
+                return mIsDead;
+            }
+        }
         
         private PlayerInputHandler mPlayerInputHandler;
         private PlayerLocomotionController mPlayerLocomotionController;
         private PlayerWeaponController mPlayerWeaponController;
         private PlayerHUD mPlayerHUD;
-
+        
+        private float mHealth;
+        private bool mIsDead;
         protected override void Start()
         {
             mPlayerLocomotionController = GetComponent<PlayerLocomotionController>();
             mPlayerInputHandler = GetComponent<PlayerInputHandler>();
             mPlayerWeaponController = GetComponent<PlayerWeaponController>();
             mPlayerHUD = GetComponent<PlayerHUD>();
+            mPlayerInputHandler.OnPauseGameAction += mPlayerHUD.OnPauseGame;
+
+            mHealth = 100.0f;
+            mIsDead = false;
             
+            GameWorld.TheGameWorld.GameProcedure.OnInitGameProcedure();
         }
 
         public override void UpdateEntity()
@@ -61,6 +75,40 @@ namespace FPS_Homework_Player
         public bool AddWeaponAmmo(int amount, WeaponType weaponType)
         {
             return mPlayerWeaponController.AddWeaponAmmo(amount, weaponType);
+        }
+
+        public void OnDamaged(float damage = 10.0f)
+        {
+            //Debug.LogError("Get Damage");
+            mHealth -= damage;
+            mPlayerHUD.OnChangeHealthBar(mHealth / 100.0f);
+
+            if (mHealth <= 0)
+            {
+                OnDead();
+            }
+        }
+
+        public void OnDead()
+        {
+            mIsDead = true;
+            mPlayerHUD.OnShowGameOverUI();
+        }
+
+        public void Respawn()
+        {
+            mIsDead = false;
+            mHealth = 100.0f;
+        }
+
+        public void AddKillPoints(int points)
+        {
+            mPlayerHUD.AddScore(points);
+        }
+
+        public void SetWave()
+        {
+            mPlayerHUD.AddWave();    
         }
         
     }

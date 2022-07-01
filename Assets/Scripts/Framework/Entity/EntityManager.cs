@@ -13,22 +13,34 @@ namespace FPS_Homework_Framework
         
         private List<Entity> mNewEntities;
         private int mEntityValidID;
-
+        
+        private List<int> mEntityToBeDestroy;
+        
+        
         public void InitializeModuleBeforeOnStart()
         {
             mEntityId2Entity = new Dictionary<int, Entity>();
             mEntityGroupName2EntityGroup = new Dictionary<string, EntityGroup>();
             
             mNewEntities = new List<Entity>();
+            mEntityToBeDestroy = new List<int>();
             
             mEntityValidID = 0;
+        }
+
+        public void Clear()
+        {
+            mEntityId2Entity.Clear();
+            mEntityGroupName2EntityGroup.Clear();
+            mNewEntities.Clear();
+            
         }
         
         public void UpdateModule()
         {
             foreach (var entity in mEntityId2Entity.Values)
             {
-                if (entity.EntityStatus == EntityStatus.Active)
+                if (entity != null && entity.EntityStatus == EntityStatus.Active)
                 {
 
                     entity.UpdateEntity();
@@ -40,7 +52,7 @@ namespace FPS_Homework_Framework
         {
             foreach (var entity in mEntityId2Entity.Values)
             {
-                if (entity.EntityStatus == EntityStatus.Active)
+                if (entity != null && entity.EntityStatus == EntityStatus.Active)
                 {
                     entity.FixUpdateEntity();
                 }
@@ -51,7 +63,7 @@ namespace FPS_Homework_Framework
         {
             foreach (var entity in mEntityId2Entity.Values)
             {
-                if (entity.EntityStatus == EntityStatus.Active)
+                if (entity != null && entity.EntityStatus == EntityStatus.Active)
                 {
                     entity.LateUpdateEntity();
                 }
@@ -63,9 +75,18 @@ namespace FPS_Homework_Framework
             {
                 for (int i = 0; i < mNewEntities.Count; ++i)
                 {
+                    mNewEntities[i].ID = mEntityValidID;
                     mEntityId2Entity.Add(mEntityValidID++, mNewEntities[i]);
                 }
                 mNewEntities.Clear();
+            }
+
+            foreach (var id in mEntityToBeDestroy)
+            {
+                if(mEntityId2Entity.ContainsKey(id))
+                {
+                    mEntityId2Entity.Remove(id);
+                }
             }
             
         }
@@ -88,7 +109,18 @@ namespace FPS_Homework_Framework
             
             return entityComponent;
         }
-        
+
+        public void DestroyEntity(int ID)
+        {
+            if (mEntityId2Entity.ContainsKey(ID))
+            {
+                Entity e = mEntityId2Entity[ID];
+                e.Group.DeleteEntity(e);
+                //mEntityId2Entity.Remove(ID);
+                e.DestroySelf();
+                mEntityToBeDestroy.Add(ID);
+            }
+        }
         
     }
 

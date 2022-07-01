@@ -1,4 +1,5 @@
 
+using FPS_Homework_Framework;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -100,6 +101,9 @@ public class PlayerInputHandler : MonoBehaviour
             mIsInteract = value;
         }
     }
+
+    public UnityAction<bool> OnPauseGameAction;
+    private bool mPauseGame = false;
     
     // raw input 
     private PlayerInputActions mPlayerInputActions;
@@ -166,7 +170,10 @@ public class PlayerInputHandler : MonoBehaviour
             mPlayerInputActions.PlayerInstructions.SwitchWeapon.performed += OnSwitchWeapon;
             // press F
             mPlayerInputActions.PlayerInstructions.Interact.performed += OnInteractObject;
-            
+            // Pause
+            mPlayerInputActions.PlayerInstructions.Pause.performed+=
+                OnPauseGame;
+
             mPlayerInputActions.Enable();
         }
     }
@@ -213,7 +220,10 @@ public class PlayerInputHandler : MonoBehaviour
             // press F
             mPlayerInputActions.PlayerInstructions.Interact.performed -= 
                 OnInteractObject;
-            
+            // Esc
+            mPlayerInputActions.PlayerInstructions.Pause.performed -=
+                OnPauseGame;
+
             mPlayerInputActions.Disable();
         }
     }
@@ -329,6 +339,15 @@ public class PlayerInputHandler : MonoBehaviour
     private void OnInteractObject(InputAction.CallbackContext action)
     {
         mIsInteract = true;
+    }
+
+    private void OnPauseGame(InputAction.CallbackContext action)
+    {
+        if (OnAimAction != null)
+        {
+            mPauseGame = !mPauseGame;
+            OnPauseGameAction.Invoke(mPauseGame);
+        }
     }
     
     #endregion

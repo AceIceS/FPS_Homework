@@ -10,13 +10,15 @@ namespace FPS_Homework_Framework
     public class FrameworkConstants
     {
         // scene
+        public const string StartSceneResPath = "Scenes/StartScene";
+        
         public const string LoadingSceneResPath = "Scenes/Loading";
 
         public const string TestSceneResPath = "Scenes/TestScene";
 
         public const string SceneResPath = "Scenes/BattleGround_1";
 
-        public const string ResInfoJsonPath = "/Scripts/PreloadResInfo.json";
+        public const string ResInfoJsonPath = "/PreloadResInfo.json";
 
         public const string PlayerEntityName = "Entity-000";
 

@@ -29,6 +29,7 @@ namespace FPS_Homework_Enemy
             var chaseState = new EnemyChaseState();
             chaseState.Distance = 1.5f;
             chaseState.StateName = "Chase";
+            chaseState.NextStateName = EnemyStateNames.DecisionState;
             var attackState = new MeleeEnemyAttackState();
             attackState.StateName = "Attack";
             var deadState = new EnemyDeadState();
@@ -101,6 +102,8 @@ namespace FPS_Homework_Enemy
             animator.SetBool("dead", true);
             // TODO:set ragdoll
             
+            GameWorld.TheGameWorld.GameProcedure.OnEliminateEnemy();
+            EntityManager.Instance.DestroyEntity(ID);
         }
         
         

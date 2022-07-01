@@ -128,7 +128,7 @@ namespace FPS_Homework_Weapon
         }
         
         // Create Weapon and Bind Owner
-        public void InstantiateWeapon(Transform weaponSlot, GameObject owner)
+        public virtual void InstantiateWeapon(Transform weaponSlot, GameObject owner)
         {
             if (WeaponPrefab == null)
             {

@@ -30,7 +30,7 @@ namespace FPS_Homework_Framework
             mResPathInfo = new ResPathInfo();
             
             // Deserialize json 
-            using (StreamReader sr = new StreamReader(Application.dataPath +
+            using (StreamReader sr = new StreamReader(Application.streamingAssetsPath +
                                  FrameworkConstants.ResInfoJsonPath))
             {
                 string str = sr.ReadToEnd();

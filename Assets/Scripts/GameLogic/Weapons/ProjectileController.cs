@@ -13,53 +13,13 @@ using UnityEngine.Events;
 namespace FPS_Homework_Weapon
 {
 
-    public class ProjectileController : MonoBehaviour
+    public class ProjectileController : ProjectileBaseController
     {
-        // 
-        public UnityAction<Vector3, Vector3, Collider, float> OnHitTargetAction;
-        
-        // Player or other ?
-        public GameObject ProjectileCreater;
-        public Transform ProjectileTip;
-        public float ProjectileRadius;
-        
-        public float MaxAliveTime;
-        public float ProjectileDamage;
-        public float ProjectileSpeed;
-        public float Graviaty;
-        
-        public Vector3 MuzzleVelocity;
-        public Vector3 ProjectileInitialPos;
-
-        public float TrajectoryDeltaCorrection;
-        
-        public LayerMask ImpactLayers = -1;
-
-        public List<string> RifleImpactFxName;
-        public string RifleProjectileHoleDecalName;
         
         
-        private Vector3 mVelocity;
-        
-        private List<Collider> mShooterColliders;
-        
-        private bool mNeedCorrectTragjectory = false;
-        private Vector3 mTrajectoryCorrectionVector;
-        private Vector3 mAccumulatedTrajectoryCorrectionVector = Vector3.zero;
-
-        private Vector3 mLastPosition;
-        
-        public void OnProjectileShot()
+        public override void OnProjectileShot()
         {
-            // Take care of colliders of shooter
-            mShooterColliders = new List<Collider>();
-            Collider[] colliders = ProjectileCreater.GetComponentsInChildren<Collider>();
-            mShooterColliders.AddRange(colliders);
-            
-            // 
-            mLastPosition = ProjectileInitialPos;
-            mVelocity = transform.forward * ProjectileSpeed;
-            //transform.position += MuzzleVelocity * Time.deltaTime;
+            base.OnProjectileShot();
 
             PlayerWeaponController playerWeaponController =
                 ProjectileCreater.GetComponent<PlayerWeaponController>();
@@ -93,7 +53,7 @@ namespace FPS_Homework_Weapon
         
 
         // Update is called once per frame
-        void Update()
+        protected override void UpdateProjectile()
         {
             // move
             transform.position += mVelocity * Time.deltaTime;
@@ -118,7 +78,7 @@ namespace FPS_Homework_Weapon
 
         }
 
-        private bool IsValidHit(RaycastHit hit)
+        protected override bool IsValidHit(RaycastHit hit)
         {
             if (hit.collider.tag == "Entity")
             {
@@ -161,46 +121,9 @@ namespace FPS_Homework_Weapon
             transform.position += correctionThisFrame;
         }
 
-        private void ProjectileRaycastCheck()
-        {
-            
-            RaycastHit closestHit = new RaycastHit();
-            closestHit.distance = Mathf.Infinity;
-            bool foundHit = false;
-
-            // Sphere cast
-            Vector3 displacementSinceLastFrame = ProjectileTip.position - mLastPosition;
-            RaycastHit[] hits = Physics.SphereCastAll(mLastPosition, ProjectileRadius,
-                displacementSinceLastFrame.normalized, 
-                displacementSinceLastFrame.magnitude, ImpactLayers,
-                QueryTriggerInteraction.Collide);
-            foreach (var hit in hits)
-            {
-                if (IsValidHit(hit) && hit.distance < closestHit.distance)
-                {
-                    foundHit = true;
-                    closestHit = hit;
-                    // only need first checked object
-                    break;
-                }
-            }
-
-            if (foundHit)
-            {
-                // Handle case of casting while already inside a collider
-                if (closestHit.distance <= 0f)
-                {
-                    closestHit.point = transform.position;
-                    closestHit.normal = -transform.forward;
-                }
-
-                OnHitTarget(closestHit.point, closestHit.normal, closestHit.collider);
-            }
-        }
-        
         // Hit ground : Show FX
         // Hit Target : Invoke OnHitAction
-        protected virtual void OnHitTarget(Vector3 point, Vector3 normal, Collider collider)
+        protected override void OnHitTarget(Vector3 point, Vector3 normal, Collider collider)
         {
             
             DamageableTarget dt = collider.GetComponent<DamageableTarget>();

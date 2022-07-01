@@ -27,8 +27,8 @@ namespace FPS_Homework_Enemy
             chaseState.StateName = "Chase";
             var attackState = new ShooterAAttackState();
             attackState.StateName = "Attack";
-            var throwGrenadeState = new ShooterAThrowGrenadeState();
-            throwGrenadeState.StateName = "ShooterAThrowGrenade";
+            //var throwGrenadeState = new ShooterAThrowGrenadeState();
+            //throwGrenadeState.StateName = "ShooterAThrowGrenade";
             var deadState = new EnemyDeadState();
             deadState.StateName = "Dead";
             deadState.OnEnemyEntityEnterDeadState += OnEntityEnterDeadState;
@@ -41,7 +41,7 @@ namespace FPS_Homework_Enemy
                 decisionState,
                 chaseState,
                 attackState,
-                throwGrenadeState,
+                //throwGrenadeState,
                 deadState,
                 hesitateState
             });

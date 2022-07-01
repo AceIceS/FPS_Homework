@@ -20,7 +20,6 @@ namespace FPS_Homework_Weapon
         public GameObject InstantiateProjectice(WeaponBase weapon, Vector3 pos, Quaternion quat)
         {
             mNewProjectileInstance = Instantiate(ProjectilePrefab,pos,quat);
-
             Owner = weapon.Owner;
             InitialPosition = pos;
             InitialDirection = quat.eulerAngles;

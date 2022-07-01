@@ -27,13 +27,37 @@ namespace FPS_Homework_Weapon
                 ResourceManager.Instance.GenerateFxAt(RifleProjectileHoleDecalName,
                     point + normal * 0.001f, Quaternion.LookRotation(normal), 5.0f);
             }
-            else
+    
+            // range
+            Collider[] candidates = Physics.OverlapSphere(point, 3.0f);
+            if (candidates != null)
             {
-                if (OnHitTargetAction != null)
+                Dictionary<GameObject, Collider> dict = new Dictionary<GameObject, Collider>();
+                
+                foreach (var candidate in candidates)
                 {
-                    OnHitTargetAction.Invoke(point,normal,collider, ProjectileDamage);    
+                    DamageableTarget targetDt = candidate.GetComponent<DamageableTarget>();
+                    if (candidate.isTrigger && targetDt != null)
+                    {
+                        
+                        if (!dict.ContainsKey(targetDt.EntityGameObject))
+                        {
+                            dict.Add(targetDt.EntityGameObject, candidate);
+                        }
+                    }
+                    
                 }
+
+                foreach (var c in dict.Values)
+                {
+                    if (OnHitTargetAction != null)
+                    {
+                        OnHitTargetAction(point, normal, c, ProjectileDamage);
+                    }
+                }
+
             }
+            
             // destroy projectile
             Destroy(gameObject);
         }

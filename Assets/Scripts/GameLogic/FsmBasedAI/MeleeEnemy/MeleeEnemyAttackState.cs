@@ -13,6 +13,8 @@ namespace FPS_Homework_Enemy_AI
         private EnemyEntityMelee mMeleeEnemyEntity;
 
         private const string mAttackParamName = "attack";
+
+        private EnemyWeaponController mWeaponController;
         
         // control leave state
         // delay 0.5s
@@ -34,6 +36,7 @@ namespace FPS_Homework_Enemy_AI
             mMeleeEnemyEntity.OnMeleeAttackEnd +=
                 OnAttackEnd;
 
+            mWeaponController = mMeleeEnemyEntity.GetComponent<EnemyWeaponController>();
         }
         
         public override void OnEnterState()
@@ -75,11 +78,13 @@ namespace FPS_Homework_Enemy_AI
         private void OnMeleeAttackWeaponActive()
         {
             //Debug.LogError("Weapon Active : " + mEntity.name);
+            mWeaponController.ActiveMeleeWeapon();
         }
 
         private void OnMeleeAttackWeaponInactive()
         {
             //Debug.LogError("Weapon Inactive : " + mEntity.name);
+            mWeaponController.InactiveMeleeWeapon();
         }
 
         private void OnAttackEnd()

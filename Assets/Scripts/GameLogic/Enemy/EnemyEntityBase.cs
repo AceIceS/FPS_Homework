@@ -32,6 +32,7 @@ namespace FPS_Homework_Enemy
         protected FSM mFSM;
         
         protected EnemyUI mEnemyUI;
+
         protected override void Start()
         {
             OnInitFSM();
@@ -45,8 +46,14 @@ namespace FPS_Homework_Enemy
         {
         }
 
+        protected virtual void InitStatus()
+        {
+            
+        }
+        
         protected virtual void PutIntoBattleGround()
         {
+            InitStatus();
             mFSM.StartFSM(EnemyStateNames.DecisionState);
         }
 

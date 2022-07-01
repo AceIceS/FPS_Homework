@@ -238,7 +238,11 @@ namespace FPS_Homework_Player
 
         private void OnAimAction(bool flag)
         {
-            mPlayerHUD.SetAimHudActive(flag);
+            // only works when have a weapon 
+            if (mCurrentWeapon != null)
+            {
+                mPlayerHUD.SetAimHudActive(flag);
+            }
         }
         
         private void CalculateWeaponRecoilOffsets()
@@ -391,10 +395,12 @@ namespace FPS_Homework_Player
         protected override void OnHitTarget(Vector3 point, Vector3 normal, Collider collider, float projectileDamage)
         {
             DamageableTarget dt = collider.GetComponent<DamageableTarget>();
-            
+
             // blood splat impact effect
-            ResourceManager.Instance.GenerateFxAt("ImpactBloodSplat", point, 
+            ResourceManager.Instance.GenerateFxAt(dt.ImpactFXName, point,
                 Quaternion.LookRotation(normal), 2.0f);
+
+
             // On Hit
             EnemyEntityBase eeb = dt.EntityGameObject.GetComponent<EnemyEntityBase>();
             eeb.OnHit(projectileDamage);

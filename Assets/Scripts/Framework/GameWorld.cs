@@ -6,6 +6,7 @@ using FPS_Homework_Item;
 using FPS_Homework_Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FPS_Homework_GamePlay;
 
 namespace FPS_Homework_Framework
 {
@@ -29,16 +30,25 @@ namespace FPS_Homework_Framework
                 return mPickupItemLayer;
             }
         }
+        
         private LayerMask mPickupItemLayer;
+
+        public GameProcedure GameProcedure
+        {
+            get
+            {
+                return mGameProcedure;
+            }
+        }
         
         private List<IGameFrameworkModule> mGameFrameworkModules;
         [SerializeField]
         private GameObject mPlayerRespawnPoint;
         [SerializeField]
         private List<GameObject> mItemRespawnPoints;
-        [SerializeField]
-        private List<GameObject> mEnemyRespawnPoints;
-        
+        //[SerializeField]
+        //private List<GameObject> mEnemyRespawnPoints;
+        private GameProcedure mGameProcedure;
         
         // 
         private GameObject mPlayer = null;
@@ -68,12 +78,14 @@ namespace FPS_Homework_Framework
             mItemRespawnPoints.AddRange(GameObject.FindGameObjectsWithTag(FrameworkConstants.ItemRespawnPointName));
             
             // Enemy respawn points
-            mEnemyRespawnPoints = new List<GameObject>();
-            mEnemyRespawnPoints.AddRange(GameObject.FindGameObjectsWithTag(FrameworkConstants.EnemyRespawnPointName));
+            //mEnemyRespawnPoints = new List<GameObject>();
+            //mEnemyRespawnPoints.AddRange(GameObject.FindGameObjectsWithTag(FrameworkConstants.EnemyRespawnPointName));
             
             // test
             TestSpawnSomething();
-            
+
+            mGameProcedure = GetComponent<GameProcedure>();
+            //mGameProcedure.OnInitGameProcedure();
         }
 
         private void Update()
@@ -108,7 +120,6 @@ namespace FPS_Homework_Framework
                 }
             }
         }
-
 
         #region Utility Funcs
 
@@ -145,37 +156,37 @@ namespace FPS_Homework_Framework
                 "PistolAmmoItem",
                 mItemRespawnPoints[2].transform.position + Vector3.up / 2,
                 Quaternion.Euler(45,0,0));
-            EntityManager.Instance.AddEntity<AmmoItemEntity>(
-                "LaserAmmoItem",
-                mItemRespawnPoints[3].transform.position + Vector3.up / 2,
-                Quaternion.Euler(45,0,0));
-            
+
             EntityManager.Instance.AddEntity<WeaponItemEntity>(
                 "WeaponGrenadeLauncherItem",
-                mItemRespawnPoints[4].transform.position + Vector3.up / 2,
+                mItemRespawnPoints[3].transform.position + Vector3.up / 2,
                 Quaternion.Euler(-45,0,0));
             EntityManager.Instance.AddEntity<WeaponItemEntity>(
                 "WeaponPistolItem",
-                mItemRespawnPoints[5].transform.position + Vector3.up / 2,
+                mItemRespawnPoints[4].transform.position + Vector3.up / 2,
                 Quaternion.Euler(-45,0,0));
             EntityManager.Instance.AddEntity<WeaponItemEntity>(
                 "WeaponRifleItem",
-                mItemRespawnPoints[6].transform.position + Vector3.up / 2,
+                mItemRespawnPoints[5].transform.position + Vector3.up / 2,
                 Quaternion.Euler(-45,0,0));
-            EntityManager.Instance.AddEntity<WeaponItemEntity>(
-                "WeaponLaserRifleItem",
-                mItemRespawnPoints[7].transform.position + Vector3.up / 2,
-                Quaternion.Euler(-45,0,0));
-            
+
             // test enemy
-            EntityManager.Instance.AddEntity<EnemyEntityMelee>(
-                "EnemyEntityMeleeSmall",
-                mEnemyRespawnPoints[0].transform.position,
-                Quaternion.identity);
+            //EntityManager.Instance.AddEntity<EnemyEntityMelee>(
+            //    "EnemyEntityMeleeSmall",
+            //    mEnemyRespawnPoints[0].transform.position,
+            //    Quaternion.identity);
             
             //var testEnemy =  EntityManager.Instance.AddEntity<EnemyEntityShooterA>(
             //    "EnemyEntityShooterA",
             //    mEnemyRespawnPoints[1].transform.position,
+            //    Quaternion.identity);
+            //var bomberDrone = EntityManager.Instance.AddEntity<EnemyBomber>(
+            //    "EnemyBomberDrone",
+            //    mEnemyRespawnPoints[1].transform.position,
+            //    Quaternion.identity);
+            //var drone = EntityManager.Instance.AddEntity<EnemyDrone>(
+            //    "EnemyDrone",
+            //    mEnemyRespawnPoints[6].transform.position,
             //    Quaternion.identity);
 
         }

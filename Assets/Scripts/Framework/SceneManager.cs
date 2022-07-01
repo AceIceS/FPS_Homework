@@ -34,17 +34,18 @@ namespace FPS_Homework_Framework
             // load target scene
             AsyncOperation op =
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scenePath, LoadSceneMode.Single);
+
             yield return null;
             
             while (op.isDone == false)
             {
                 // trigger event for loading scene UI
                 EventManager.Instance.TriggerEventWithEventIdAndArgs(
-                    EventID.LOADING,new EventArgsOneFloat(op.progress));
-                
+                    EventID.LOADING,new EventArgsOneFloat(op.progress + 0.1f));
                 yield return new WaitForSeconds(1.0f);
             }
 
+            
             yield return new WaitForSeconds(1.0f);
             callback?.Invoke();
         }

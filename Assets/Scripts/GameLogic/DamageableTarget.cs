@@ -9,7 +9,7 @@ namespace FPS_Homework_GamePlay
     public class DamageableTarget : MonoBehaviour
     {
         public GameObject EntityGameObject;
-        
+        public string ImpactFXName = "ImpactBloodSplat";
     }
 
 }
